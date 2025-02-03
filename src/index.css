@@ -1,0 +1,17 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Tailwind CSS 기본 스타일 가져오기 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/

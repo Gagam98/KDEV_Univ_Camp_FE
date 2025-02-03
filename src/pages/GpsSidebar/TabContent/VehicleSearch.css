@@ -1,0 +1,37 @@
+/* 공통 너비 스타일 */
+.common-width {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.vehicle-search input,
+.vehicle-search select {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.vehicle-search button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.vehicle-search button:hover {
+  background-color: #45a049;
+}
+
+/* 공통 너비 적용 */
+.search-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

@@ -1,0 +1,30 @@
+/* 공통 너비 스타일 */
+.common-width {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+/* 공통 너비 적용 */
+.stats-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.stat-card {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

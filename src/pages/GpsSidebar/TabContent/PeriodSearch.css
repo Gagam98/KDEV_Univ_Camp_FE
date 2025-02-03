@@ -1,0 +1,27 @@
+/* 공통 너비 스타일 */
+.common-width {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.date-search {
+  text-align: center;
+}
+
+/* 공통 너비 적용 */
+.date-search {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.date-picker input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
