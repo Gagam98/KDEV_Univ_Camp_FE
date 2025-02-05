@@ -4,8 +4,6 @@
   flex-direction: column;
   justify-content: center; /* 수직 중앙 정렬 */
   align-items: center; /* 수평 중앙 정렬 */
-  min-height: 100vh; /* 화면 전체 높이 사용 */
-  background-color: #f9f9f9;
   font-family: Arial, sans-serif;
   margin: 0; /* 기본 margin 제거 */
 }
@@ -19,8 +17,7 @@
 }
 
 .login-page form {
-  width: 100%;
-  max-width: 400px; /* 최대 너비 제한 */
+  width: 400px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
