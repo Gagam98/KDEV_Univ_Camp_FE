@@ -21,7 +21,6 @@ const App = () => {
       <Route path="/login" element={<LoginPage setNickname={setNickname} />} />
       <Route path="/signup" element={<SignupPage />} />
 
-      {/* 로그인 후 보호된 페이지 */}
       <Route path="/*" element={<AfterLogin nickname={nickname} />} />
     </Routes>
   );
