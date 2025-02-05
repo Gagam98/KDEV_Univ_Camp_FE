@@ -1,0 +1,42 @@
+/*** HEADER CONTAINER ***/
+.header-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 40px);
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 100; /* 상단 고정 */
+}
+
+/*** LOGO STYLES ***/
+.logo {
+  height: 30px; /* 로고 높이 조정 */
+  width: auto;
+  cursor: pointer;
+}
+
+/*** BUTTON STYLES ***/
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  background: none; /* 배경색 없음 */
+  color: var(--btn-txt-color, #1f2937); /* 텍스트 색상 */
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--font-main, "Helvetica", "Arial", sans-serif);
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.auth-buttons button:hover {
+  color: var(--hover-txt-color, #ffffff); /* 호버 시 텍스트 색상 */
+}

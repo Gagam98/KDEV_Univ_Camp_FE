@@ -1,9 +1,9 @@
 /*** COLORS ***/
 :root {
-  --bg-gradient: linear-gradient(45deg, #00dbff, #077bff, #00edcc);
-  --txt-color: #ffffff;
+  --bg-gradient: linear-gradient(360deg, #ffffff 30%, #d2eaff, #00dbff);
+  --txt-color: #1f2937; /* 어두운 텍스트 색상 */
   --icn-color: #ffffff;
-  --font-main: "Helvetica", "Arial", sans-serif;
+  --font-main: "Roboto", "Noto Sans KR", sans-serif;
   --font-alt: "monospace";
 }
 
@@ -16,6 +16,7 @@ body {
   font-family: var(--font-alt);
   color: var(--txt-color);
   background: var(--bg-gradient);
+  background-size: cover; /* 화면에 그라데이션 꽉 채우기 */
 }
 
 p {
@@ -29,12 +30,13 @@ p {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; /* vh 사용으로 화면 전체 채우기 */
+  height: 100vh;
   position: relative;
 }
 
 .cntr-innr {
   text-align: center;
+  transform: translateY(-50px); /* 기존 위치에서 50px 위로 이동 */
 }
 
 /*** SEARCH STYLES ***/

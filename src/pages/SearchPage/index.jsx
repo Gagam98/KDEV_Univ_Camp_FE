@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { initializeSearchInput, cleanupSearchInput } from "@/api/Search";
-import AuthButtons from "@@/SearchPage/AuthButtons";
+import { initializeSearchInput, cleanupSearchInput } from "@/api/SearchApi";
+import AuthButtons from "@@/SearchPage/Header";
+import "@@/SearchPage/Header.css";
 import "@@/SearchPage/Search.css";
 
 export default function SearchPage() {
