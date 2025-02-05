@@ -1,43 +1,43 @@
 /*** COLORS ***/
 :root {
-  --bg-color: #913d88;
+  --bg-gradient: linear-gradient(45deg, #00dbff, #077bff, #00edcc);
   --txt-color: #ffffff;
   --icn-color: #ffffff;
-  --btn-bg-color: #000000;
-  --btn-txt-color: #ffffff;
+  --font-main: "Helvetica", "Arial", sans-serif;
+  --font-alt: "monospace";
 }
 
-/*** DEMO ***/
+/*** GLOBAL STYLES ***/
 html,
 body {
   height: 100%;
   margin: 0;
-}
-
-body {
-  background: var(--bg-color);
-  font-family: monospace;
   font-size: 13px;
+  font-family: var(--font-alt);
   color: var(--txt-color);
+  background: var(--bg-gradient);
 }
 
 p {
   margin-top: 30px;
+  text-align: center;
 }
 
+/*** CONTAINER STYLES ***/
 .cntr {
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* vh 사용으로 화면 전체 채우기 */
+  position: relative;
 }
 
 .cntr-innr {
-  display: table-cell;
   text-align: center;
-  vertical-align: middle;
 }
 
-/*** STYLES ***/
+/*** SEARCH STYLES ***/
 .search {
   display: inline-block;
   position: relative;
@@ -68,7 +68,6 @@ p {
 .search.active,
 .search:hover {
   width: 200px;
-  margin-right: 0;
 }
 
 .search.active::after,
@@ -79,34 +78,9 @@ p {
 .search input {
   width: 100%;
   border: none;
-  box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: var(--font-main);
   font-size: 15px;
   color: inherit;
   background: transparent;
   outline: none;
-}
-
-/*** BUTTON STYLES ***/
-.auth-buttons {
-  margin-top: 20px;
-}
-
-.login-btn,
-.signup-btn {
-  background-color: var(--btn-bg-color);
-  color: var(--btn-txt-color);
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 200ms ease, color 200ms ease;
-}
-
-.login-btn:hover,
-.signup-btn:hover {
-  background-color: var(--txt-color);
-  color: var(--bg-color);
 }
