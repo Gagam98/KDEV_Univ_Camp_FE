@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import LoginPage from "@@/LoginPage";
-import SignupPage from "@@/SignupPage";
-import ProtectedRoutes from "@@/AfterLogin";
-import "./App.css";
-import AfterLogin from "./pages/AfterLogin";
+import { Routes, Route } from "react-router-dom";
+import SearchPage from "@@/SearchPage";
+import "@/App.css";
 
-const App = () => {
-  const [nickname, setNickname] = useState("");
-
-  // 로그인 상태 관리
-  useEffect(() => {
-    const savedNickname = localStorage.getItem("nickname");
-    if (savedNickname) setNickname(savedNickname);
-  }, []);
-
+function App() {
   return (
-    <Routes>
-      {/* 로그인 및 회원가입 페이지 */}
-      <Route path="/login" element={<LoginPage setNickname={setNickname} />} />
-      <Route path="/signup" element={<SignupPage />} />
-
-      <Route path="/*" element={<AfterLogin nickname={nickname} />} />
-    </Routes>
+    <div className="app-container">
+      <Routes>
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/login" element={<div>Login Page Placeholder</div>} />
+        <Route path="/signup" element={<div>Signup Page Placeholder</div>} />
+      </Routes>
+    </div>
   );
-};
+}
 
 export default App;

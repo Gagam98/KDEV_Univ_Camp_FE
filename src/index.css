@@ -4,14 +4,12 @@ body {
   padding: 0;
   height: 100%;
   font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* 기본 배경색 설정 */
 }
 
 #root {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-/* Tailwind CSS 기본 스타일 가져오기 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-*/
