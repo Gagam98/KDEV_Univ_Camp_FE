@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/api/config";
 
-export const signup = async (username, password, nickname) => {
+export const signup = async (id, password, nickname) => {
   try {
     const response = await fetch(`${BASE_URL}/api/signup`, {
       method: "POST",
@@ -8,7 +8,7 @@ export const signup = async (username, password, nickname) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        id,
         password,
         nickname, // 입력받은 닉네임 값 전달
       }),

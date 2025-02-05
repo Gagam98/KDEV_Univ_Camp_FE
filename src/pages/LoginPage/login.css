@@ -1,10 +1,21 @@
 /* 로그인 페이지 스타일 */
+/* 로그인 페이지 스타일 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Roboto", "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
 .login-page {
   display: flex;
   flex-direction: column;
   justify-content: center; /* 수직 중앙 정렬 */
   align-items: center; /* 수평 중앙 정렬 */
-  font-family: Arial, sans-serif;
   margin: 0; /* 기본 margin 제거 */
 }
 

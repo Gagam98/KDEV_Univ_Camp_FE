@@ -1,7 +1,14 @@
 /*** COLORS ***/
 :root {
-  --bg-gradient: linear-gradient(360deg, #ffffff 30%, #d2eaff, #00dbff);
-  --txt-color: #1f2937; /* 어두운 텍스트 색상 */
+  --bg-gradient: linear-gradient(
+    360deg,
+    #ffffff 30%,
+    #ebf7ff,
+    #d2eaff,
+    #69edff,
+    #00dbff
+  );
+  --txt-color: #1f2937;
   --icn-color: #ffffff;
   --font-main: "Roboto", "Noto Sans KR", sans-serif;
   --font-alt: "monospace";
