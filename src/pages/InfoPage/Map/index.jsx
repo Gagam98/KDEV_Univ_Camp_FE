@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "@@/Map/Map.css";
+import "@@/InfoPage/Map/Map.css";
 import carIcon from "@/assets/carMarker.png";
 
 const Map = () => {
@@ -20,9 +20,6 @@ const Map = () => {
         map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TERRAIN);
 
         trackLocation();
-        const intervalId = setInterval(() => {
-          trackLocation();
-        }, 60000);
 
         window.kakao.maps.event.addListener(
           map,
@@ -36,8 +33,6 @@ const Map = () => {
             );
           }
         );
-
-        return () => clearInterval(intervalId);
       } else {
         console.error("Kakao maps API가 로드되지 않았습니다.");
       }
@@ -61,13 +56,9 @@ const Map = () => {
         const lon = position.coords.longitude;
 
         const newPosition = new window.kakao.maps.LatLng(lat, lon);
-        setPositions((prevPositions) => [...prevPositions, newPosition]);
+        setPositions([newPosition]);
 
-        displayMarker(
-          newPosition,
-          '<div style="padding:5px;">현재위치</div>',
-          true
-        );
+        displayMarker(newPosition, true);
         drawPolyline();
       });
     } else {
@@ -75,7 +66,7 @@ const Map = () => {
     }
   };
 
-  const displayMarker = (position, message, useCustomIcon) => {
+  const displayMarker = (position, useCustomIcon) => {
     const markerOptions = {
       map: map,
       position: position,
@@ -93,12 +84,6 @@ const Map = () => {
     }
 
     const marker = new window.kakao.maps.Marker(markerOptions);
-    const infowindow = new window.kakao.maps.InfoWindow({
-      content: message,
-      removable: true,
-    });
-
-    infowindow.open(map, marker);
     map.setCenter(position);
   };
 
@@ -118,13 +103,7 @@ const Map = () => {
     }
   };
 
-  return (
-    <div
-      id="map"
-      className="map-container"
-      style={{ width: "100%", height: "100%" }}
-    ></div>
-  );
+  return <div id="map" className="map-container"></div>;
 };
 
 export default Map;

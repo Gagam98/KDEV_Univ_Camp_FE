@@ -1,0 +1,16 @@
+/* InfoPage.css */
+.info-page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-wrapper {
+  width: 800px;
+  height: 400px;
+  margin-top: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
