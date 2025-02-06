@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import DateSelector from "@@/InfoPage/Map/DateSelector";
 import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
 import "@@/InfoPage/Map/Map.css";
 import carIcon from "@/assets/carMarker.png";
+import { useCallback } from "react";
 
 const Map = () => {
   const [positions, setPositions] = useState([]);
@@ -10,47 +12,25 @@ const Map = () => {
   let map = null;
   let polyline = null;
 
-  useEffect(() => {
-    const initMap = () => {
-      if (window.kakao && window.kakao.maps) {
-        const container = document.getElementById("map");
-        const options = {
-          center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
-          level: 7,
-        };
-        map = new window.kakao.maps.Map(container, options);
-
-        map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TERRAIN);
-
-        trackLocation();
-
-        window.kakao.maps.event.addListener(
-          map,
-          "click",
-          function (mouseEvent) {
-            const latlng = mouseEvent.latLng;
-            console.log(
-              "클릭한 위치의 좌표:",
-              latlng.getLat(),
-              latlng.getLng()
-            );
-          }
-        );
-      } else {
-        console.error("Kakao maps API가 로드되지 않았습니다.");
-      }
+  const initMap = useCallback(() => {
+    const container = document.getElementById("map");
+    const options = {
+      center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
+      level: 7,
     };
 
-    const script = document.createElement("script");
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=273162e89b73e08bbf2a0524708342e1&autoload=false`;
-    script.async = true;
-    script.onload = () => window.kakao.maps.load(initMap);
-    document.body.appendChild(script);
+    map = new window.kakao.maps.Map(container, options);
+    map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TERRAIN);
 
-    return () => {
-      document.body.removeChild(script);
-    };
+    trackLocation();
+
+    window.kakao.maps.event.addListener(map, "click", (mouseEvent) => {
+      const latlng = mouseEvent.latLng;
+      console.log("클릭한 위치의 좌표:", latlng.getLat(), latlng.getLng());
+    });
   }, []);
+
+  useKakaoMapLoader(initMap);
 
   const trackLocation = () => {
     if (navigator.geolocation) {
