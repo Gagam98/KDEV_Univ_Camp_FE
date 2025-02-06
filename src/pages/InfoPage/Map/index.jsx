@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import DateSelector from "@@/InfoPage/Map/Date";
+import LocationDisplay from "@@/InfoPage/Map/location"; // 현재 위치 표시 컴포넌트
 import "@@/InfoPage/Map/Map.css";
 import carIcon from "@/assets/carMarker.png";
 
 const Map = () => {
   const [positions, setPositions] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   let map = null;
   let polyline = null;
 
@@ -103,7 +106,15 @@ const Map = () => {
     }
   };
 
-  return <div id="map" className="map-container"></div>;
+  return (
+    <div className="map-page">
+      <LocationDisplay />
+      <div className="date-container">
+        <DateSelector onDateChange={setSelectedDate} />
+      </div>
+      <div id="map" className="map-container"></div>
+    </div>
+  );
 };
 
 export default Map;
