@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DateSelector from "@@/InfoPage/Map/Date";
-import LocationDisplay from "@@/InfoPage/Map/location"; // 현재 위치 표시 컴포넌트
+import DateSelector from "@@/InfoPage/Map/DateSelector";
+import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
 import "@@/InfoPage/Map/Map.css";
 import carIcon from "@/assets/carMarker.png";
 

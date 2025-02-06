@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "@@/InfoPage/Map/LocationDisplay/LocationDisplay.css";
 
 const LocationDisplay = () => {
   const [location, setLocation] = useState("Loading...");

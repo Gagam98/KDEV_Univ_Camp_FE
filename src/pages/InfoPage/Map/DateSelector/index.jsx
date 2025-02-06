@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import calendarIcon from "@/assets/calendar.png";
-import "@@/InfoPage/Map/Date/Date.css";
+import "@@/InfoPage/Map/DateSelector/DateSelector.css";
 
 const DateSelector = ({ onDateRangeChange, onIntervalChange }) => {
   const [startDate, setStartDate] = useState(new Date());
