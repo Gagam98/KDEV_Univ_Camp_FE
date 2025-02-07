@@ -6,12 +6,16 @@ import "@@/InfoPage/infoPage.css";
 export default function InfoPage() {
   return (
     <div className="info-page">
-      <h1>Info</h1>
-      <div className="map-container">
-        <div className="map-wrapper">
-          <Map />
+      <h1 className="info-title">Info</h1>
+      <div className="info-content">
+        <div className="map-section">
+          <div className="map-wrapper">
+            <Map />
+          </div>
         </div>
-        <Distance />
+        <div className="distance-section">
+          <Distance />
+        </div>
       </div>
     </div>
   );

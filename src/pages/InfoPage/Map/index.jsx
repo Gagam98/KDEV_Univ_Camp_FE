@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import DateSelector from "@@/InfoPage/Map/DateSelector";
 import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
+import Battery from "@@/InfoPage/Map/Battery";
 import "@@/InfoPage/Map/Map.css";
 
 import carIcon from "@/assets/carMarker.png";
-import { useCallback } from "react";
 
 const Map = () => {
   const [positions, setPositions] = useState([]);
@@ -93,7 +93,11 @@ const Map = () => {
       <div className="date-container">
         <DateSelector onDateChange={setSelectedDate} />
       </div>
-      <div id="map" className="map-container"></div>
+
+      <div className="map-wrapper">
+        <div id="map" className="map-container"></div>
+        <Battery />
+      </div>
     </div>
   );
 };

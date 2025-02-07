@@ -73,6 +73,12 @@ body {
   cursor: text;
 }
 
+/* 검색창 확대 */
+.search.active,
+.search:hover {
+  width: 250px;
+}
+
 /* 버튼 스타일 */
 .search-button {
   position: absolute;
@@ -99,12 +105,6 @@ body {
 .search.active .search-button {
   opacity: 1;
   pointer-events: auto;
-}
-
-/* 검색창 확대 */
-.search.active,
-.search:hover {
-  width: 250px;
 }
 
 .search-button:hover {

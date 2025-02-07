@@ -1,0 +1,53 @@
+/* 맵 오버레이로 배터리 상태창 스타일 */
+.battery-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* 배터리 애니메이션 */
+.battery {
+  > [class*="fa-battery"] {
+    animation: showhide 5s steps(1) infinite;
+    opacity: 0;
+    perspective: 1000px;
+    backface-visibility: hidden;
+  }
+}
+
+.battery-drain {
+  > .fa-battery-4 {
+    animation-delay: -5s;
+  }
+  > .fa-battery-3 {
+    animation-delay: -4s;
+  }
+  > .fa-battery-2 {
+    animation-delay: -3s;
+  }
+  > .fa-battery-1 {
+    animation-delay: -2s;
+  }
+  > .fa-battery-0 {
+    animation-delay: -1s;
+  }
+}
+
+@keyframes showhide {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+}
