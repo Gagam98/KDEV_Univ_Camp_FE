@@ -1,18 +1,41 @@
-.battery-overlay {
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.map-container {
   position: absolute;
-  bottom: 15px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.status-left-bottom {
+  position: absolute;
+  bottom: 30px;
   left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   z-index: 999;
+}
+
+.battery-overlay {
+  width: 90px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  height: 60px;
-  border-radius: 8px;
-  padding: 5px;
+  z-index: 9;
 }
 
-/* 배터리 박스 스타일 */
 .battery-box {
   position: relative;
   width: 80px;
@@ -23,14 +46,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* 배터리 프로그레스 */
 .battery-progress {
   height: 100%;
   background: #ffffff;
   transition: width 0.5s ease;
 }
 
-/* 배터리 캡 */
 .battery-cap {
   position: absolute;
   top: 12px;
@@ -42,7 +63,6 @@
   z-index: 10;
 }
 
-/* 충전 아이콘 */
 .charging-icon {
   position: absolute;
   top: 50%;
@@ -50,14 +70,12 @@
   transform: translate(-50%, -50%);
 }
 
-/* 충전 아이콘 심볼 */
 .charging-icon-symbol {
   font-size: 16px;
   color: #ffffff;
   text-shadow: 0px 0px 3px #000000;
 }
 
-/* 배터리 상태 텍스트 */
 .battery-text {
   position: absolute;
   bottom: 4px;

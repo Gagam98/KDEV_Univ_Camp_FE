@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import DateSelector from "@@/InfoPage/Map/DateSelector";
 import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
+import DrivingStatus from "@@/InfoPage/Map/DrivingStatus";
 import Battery from "@@/InfoPage/Map/Battery";
 import "@@/InfoPage/Map/Map.css";
 
@@ -22,6 +23,11 @@ const Map = () => {
 
     map = new window.kakao.maps.Map(container, options);
     map.addOverlayMapTypeId(window.kakao.maps.MapTypeId.TERRAIN);
+
+    map.setZoomable(false);
+
+    const zoomControl = new window.kakao.maps.ZoomControl();
+    map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
     trackLocation();
 
@@ -96,7 +102,11 @@ const Map = () => {
 
       <div className="map-wrapper">
         <div id="map" className="map-container"></div>
-        <Battery level={50} isCharging={true} />
+        <div className="status-left-bottom">
+          <DrivingStatus status="운행중" />
+          <Battery level={50} isCharging={true} />
+        </div>
+        <div className="zoom-control-overlay">Zoom Controls</div>
       </div>
     </div>
   );
