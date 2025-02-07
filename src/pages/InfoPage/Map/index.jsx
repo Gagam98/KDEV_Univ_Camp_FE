@@ -3,6 +3,7 @@ import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import DateSelector from "@@/InfoPage/Map/DateSelector";
 import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
 import "@@/InfoPage/Map/Map.css";
+
 import carIcon from "@/assets/carMarker.png";
 import { useCallback } from "react";
 

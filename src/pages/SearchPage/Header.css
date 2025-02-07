@@ -27,7 +27,7 @@
 
 .auth-buttons button {
   background: none; /* 배경색 없음 */
-  color: var(--btn-txt-color, #1f2937); /* 텍스트 색상 */
+  color: var(--btn-txt-color, #ffffff); /* 텍스트 색상 */
   border: none;
   padding: 10px 20px;
   font-family: var(--font-main, "Helvetica", "Arial", sans-serif);
@@ -38,5 +38,5 @@
 }
 
 .auth-buttons button:hover {
-  color: var(--hover-txt-color, #ffffff); /* 호버 시 텍스트 색상 */
+  color: var(--hover-txt-color, #00dbff); /* 호버 시 텍스트 색상 */
 }

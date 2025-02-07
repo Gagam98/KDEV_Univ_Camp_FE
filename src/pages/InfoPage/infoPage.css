@@ -1,4 +1,3 @@
-/* InfoPage.css */
 .info-page {
   padding: 20px;
   display: flex;
@@ -6,11 +5,35 @@
   align-items: center;
 }
 
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 .map-wrapper {
   width: 800px;
   height: 400px;
-  margin-top: 20px;
   border: 2px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.map-container > .map-wrapper {
+  margin-bottom: 10px;
+}
+
+.distance-ticket {
+  width: 800px;
+  height: 200px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
