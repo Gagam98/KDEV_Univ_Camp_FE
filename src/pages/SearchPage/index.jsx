@@ -18,10 +18,11 @@ export default function SearchPage() {
       <div className="cntr">
         <AuthButtons />
         <div className="cntr-innr">
+          <div className="search-title-text">차량번호를 입력하세요.</div>
           <label className="search" htmlFor="inpt_search">
+            <span className="search-button">검색</span>
             <input id="inpt_search" type="text" />
           </label>
-          <p>차량번호 검색하기</p>
         </div>
       </div>
     </div>
