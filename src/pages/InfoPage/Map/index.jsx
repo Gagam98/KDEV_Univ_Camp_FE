@@ -96,7 +96,7 @@ const Map = () => {
 
       <div className="map-wrapper">
         <div id="map" className="map-container"></div>
-        <Battery />
+        <Battery level={50} isCharging={true} />
       </div>
     </div>
   );

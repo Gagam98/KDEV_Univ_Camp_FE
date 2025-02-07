@@ -1,6 +1,6 @@
 .battery-overlay {
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   left: 10px;
   z-index: 999;
   display: flex;
@@ -8,48 +8,61 @@
   align-items: center;
   width: 90px;
   height: 60px;
-  background: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 5px;
+}
+
+/* 배터리 박스 스타일 */
+.battery-box {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* 배터리 프로그레스 */
+.battery-progress {
+  height: 100%;
+  background: #ffffff;
+  transition: width 0.5s ease;
+}
+
+/* 배터리 캡 */
+.battery-cap {
+  position: absolute;
+  top: 12px;
+  right: -5px;
+  width: 4px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* 충전 아이콘 */
+.charging-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 충전 아이콘 심볼 */
+.charging-icon-symbol {
+  font-size: 16px;
   color: #ffffff;
+  text-shadow: 0px 0px 3px #000000;
 }
 
-.battery .fa-stack {
-  font-size: 4rem;
-  line-height: 1;
-}
-
-/* 배터리 애니메이션 */
-.battery {
-  > [class*="fa-battery"] {
-    animation: showhide 5s steps(1) infinite;
-    opacity: 0;
-  }
-}
-
-.battery-drain {
-  > .fa-battery-full {
-    animation-delay: -5s;
-  }
-  > .fa-battery-three-quarters {
-    animation-delay: -4s;
-  }
-  > .fa-battery-half {
-    animation-delay: -3s;
-  }
-  > .fa-battery-quarter {
-    animation-delay: -2s;
-  }
-  > .fa-battery-empty {
-    animation-delay: -1s;
-  }
-}
-
-@keyframes showhide {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 0;
-  }
+/* 배터리 상태 텍스트 */
+.battery-text {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 12px;
+  color: #ffffff;
+  text-shadow: 0px 0px 3px #000000;
 }
