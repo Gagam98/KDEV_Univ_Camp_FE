@@ -1,4 +1,3 @@
-/* 맵 오버레이로 배터리 상태창 스타일 */
 .battery-overlay {
   position: absolute;
   bottom: 10px;
@@ -7,12 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-  padding: 10px;
+  width: 90px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 5px;
   color: #ffffff;
+}
+
+.battery .fa-stack {
+  font-size: 4rem;
+  line-height: 1;
 }
 
 /* 배터리 애니메이션 */
@@ -20,25 +24,23 @@
   > [class*="fa-battery"] {
     animation: showhide 5s steps(1) infinite;
     opacity: 0;
-    perspective: 1000px;
-    backface-visibility: hidden;
   }
 }
 
 .battery-drain {
-  > .fa-battery-4 {
+  > .fa-battery-full {
     animation-delay: -5s;
   }
-  > .fa-battery-3 {
+  > .fa-battery-three-quarters {
     animation-delay: -4s;
   }
-  > .fa-battery-2 {
+  > .fa-battery-half {
     animation-delay: -3s;
   }
-  > .fa-battery-1 {
+  > .fa-battery-quarter {
     animation-delay: -2s;
   }
-  > .fa-battery-0 {
+  > .fa-battery-empty {
     animation-delay: -1s;
   }
 }
