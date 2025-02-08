@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import "@@/InfoPage/Map/Zoom/Zoom.css";
 
-const Zoom = () => {
+const Zoom = ({ mapInstance }) => {
   useEffect(() => {
-    const zoomControl = new window.kakao.maps.ZoomControl();
-    window.map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
-  }, []);
+    if (mapInstance) {
+      const zoomControl = new window.kakao.maps.ZoomControl();
+      mapInstance.addControl(
+        zoomControl,
+        window.kakao.maps.ControlPosition.RIGHT
+      );
+    }
+  }, [mapInstance]);
 
-  return <div className="zoom-control-overlay"></div>;
+  return <div className="zoom-overlay"></div>;
 };
 
 export default Zoom;

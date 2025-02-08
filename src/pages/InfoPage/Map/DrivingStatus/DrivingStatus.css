@@ -18,7 +18,6 @@
   margin-right: 8px;
 }
 
-/* 상태별 circle 색상 */
 .status-running .status-circle {
   background-color: green;
 }

@@ -4,6 +4,7 @@ import DateSelector from "@@/InfoPage/Map/DateSelector";
 import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
 import DrivingStatus from "@@/InfoPage/Map/DrivingStatus";
 import Battery from "@@/InfoPage/Map/Battery";
+import Zoom from "@@/InfoPage/Map/Zoom";
 import "@@/InfoPage/Map/Map.css";
 
 import carIcon from "@/assets/carMarker.png";
@@ -26,9 +27,10 @@ const Map = () => {
 
     map.setZoomable(false);
 
+    /*
     const zoomControl = new window.kakao.maps.ZoomControl();
     map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
-
+    */
     trackLocation();
 
     window.kakao.maps.event.addListener(map, "click", (mouseEvent) => {
@@ -106,7 +108,8 @@ const Map = () => {
           <DrivingStatus status="운행중" />
           <Battery level={50} isCharging={true} />
         </div>
-        <div className="zoom-control-overlay">Zoom Controls</div>
+
+        <Zoom mapInstance={map} />
       </div>
     </div>
   );
