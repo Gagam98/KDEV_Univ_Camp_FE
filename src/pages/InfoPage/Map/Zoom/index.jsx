@@ -4,6 +4,11 @@ import "@@/InfoPage/Map/Zoom/Zoom.css";
 const Zoom = ({ mapInstance }) => {
   useEffect(() => {
     if (mapInstance) {
+      const existingControls = document.querySelectorAll(
+        ".kakao-map-zoom-control"
+      );
+      existingControls.forEach((control) => control.remove());
+
       const zoomControl = new window.kakao.maps.ZoomControl();
       mapInstance.addControl(
         zoomControl,
@@ -12,9 +17,7 @@ const Zoom = ({ mapInstance }) => {
     }
   }, [mapInstance]);
 
-  /*console.log(mapInstance);*/
-
-  return <div className="zoom-overlay"></div>;
+  return null;
 };
 
 export default Zoom;

@@ -14,10 +14,7 @@ export default function InfoPage() {
 
   return (
     <div className="info-page">
-      <Header
-        username={nickname}
-        userInitial={nickname.charAt(0).toUpperCase()}
-      />
+      <Header nickname={nickname} initial={nickname.charAt(0).toUpperCase()} />
       <div className="info-content">
         <div className="map-section">
           <div className="map-wrapper">

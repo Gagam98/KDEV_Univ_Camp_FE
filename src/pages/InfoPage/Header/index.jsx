@@ -3,14 +3,21 @@ import { getUserInfo } from "@/api/signupApi";
 import "@@/InfoPage/infoPage.css";
 
 export default function InfoPage() {
-  const [username, setUsername] = useState("Guest");
+  const [nickname, setNickname] = useState("Guest");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getUserInfo()
-      .then(({ nickname }) => setUsername(nickname || "Guest"))
+      .then(({ nickname }) => setNickname(nickname || "Guest"))
       .finally(() => setIsLoading(false));
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("nickname");
+    setNickname("Guest");
+    console.log("로그아웃되었습니다.");
+  };
 
   return (
     <div className="info-page">
@@ -18,14 +25,10 @@ export default function InfoPage() {
         <div className="search-container">
           <input type="text" placeholder="Search..." className="search-input" />
         </div>
-        <span className="username-display">
-          {isLoading ? "Loading..." : username}
+        <span className="nickname-display">
+          {isLoading ? "Loading..." : nickname}
         </span>
-        {username !== "Guest" && (
-          <button onClick={() => console.log("로그아웃되었습니다.")}>
-            Logout
-          </button>
-        )}
+        {nickname !== "Guest" && <button onClick={handleLogout}>Logout</button>}
       </div>
     </div>
   );

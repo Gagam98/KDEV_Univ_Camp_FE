@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
-import { login } from "@/api/loginApi";
-import "@/pages/LoginPage/login.css";
 import { useNavigate } from "react-router-dom";
+import { login } from "@/api/loginApi";
+import "@@/LoginPage/login.css";
 
 const LoginPage = ({ setNickname }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const usernameRef = useRef();
+  const idRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
 
@@ -14,22 +14,23 @@ const LoginPage = ({ setNickname }) => {
     e.preventDefault();
     setLoading(true);
 
-    const username = usernameRef.current.value;
+    const id = idRef.current.value;
     const password = passwordRef.current.value;
 
-    if (!username || !password) {
+    if (!id || !password) {
       alert("아이디와 비밀번호를 입력해주세요.");
       setLoading(false);
       return;
     }
 
     try {
-      const response = await login(username, password);
+      const response = await login(id, password);
       const { token, nickname } = response;
-      /*console.log(response);*/
+
       localStorage.setItem("token", token);
       localStorage.setItem("nickname", nickname);
       setNickname(nickname);
+
       alert(`${nickname}님, 로그인 성공!`);
       navigate("/");
     } catch (error) {
@@ -45,11 +46,11 @@ const LoginPage = ({ setNickname }) => {
       <h1>로그인</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="username">아이디</label>
+          <label htmlFor="id">아이디</label>
           <input
-            ref={usernameRef}
+            ref={idRef}
             type="text"
-            id="username"
+            id="id"
             placeholder="아이디를 입력하세요"
           />
         </div>

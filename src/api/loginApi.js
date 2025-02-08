@@ -1,13 +1,13 @@
 import { BASE_URL } from "@/api/config";
 
-export const login = async (username, password) => {
+export const login = async (id, password) => {
   try {
     const response = await fetch(`${BASE_URL}/api/authenticate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ id, password }),
     });
 
     if (!response.ok) {
@@ -15,7 +15,7 @@ export const login = async (username, password) => {
     }
 
     const data = await response.json();
-    return { token: data.token, nickname: data.nickname }; // 닉네임 포함 반환
+    return { token: data.token, nickname: data.nickname };
   } catch (error) {
     console.error("로그인 에러:", error);
     throw error;
