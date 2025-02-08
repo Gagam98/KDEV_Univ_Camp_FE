@@ -12,6 +12,8 @@ const Zoom = ({ mapInstance }) => {
     }
   }, [mapInstance]);
 
+  /*console.log(mapInstance);*/
+
   return <div className="zoom-overlay"></div>;
 };
 

@@ -1,5 +1,6 @@
 .info-page {
   padding: 40px;
+  padding-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
