@@ -5,6 +5,10 @@ import LoginPage from "@@/LoginPage/index.jsx";
 import SignupPage from "@@/SignupPage/index.jsx";
 import InfoPage from "@@/InfoPage/index.jsx";
 import "@/App.css";
+//import * as jwtDecodeModule from "jwt-decode"; // jwt-decode 모듈 가져오기
+
+// 디버깅을 위해 모듈의 export 내용 출력
+//console.log("JWT Decode Module Export:", jwtDecodeModule);
 
 function App() {
   const [nickname, setNickname] = useState(""); // 닉네임 상태 추가

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
+import { saveTokenToStorage, getUserInfoFromToken } from "@/utils/auth";
 import "@@/LoginPage/login.css";
 
 const LoginPage = ({ setNickname }) => {
@@ -25,17 +26,24 @@ const LoginPage = ({ setNickname }) => {
 
     try {
       const response = await login(id, password);
-      const { token, nickname } = response;
+      const { token } = response;
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("nickname", nickname);
-      setNickname(nickname);
+      // 토큰 저장 및 사용자 정보 디코딩
+      saveTokenToStorage(token);
+      const userInfo = getUserInfoFromToken(token);
 
-      alert(`${nickname}님, 로그인 성공!`);
-      navigate("/");
+      if (userInfo) {
+        setNickname(userInfo.nickname);
+        alert(`${userInfo.nickname}님, 로그인 성공!`);
+        navigate("/");
+      } else {
+        throw new Error("사용자 정보를 가져올 수 없습니다.");
+      }
     } catch (error) {
       console.error("로그인 에러:", error);
-      setErrorMessage("로그인에 실패했습니다. 다시 시도해주세요.");
+      setErrorMessage(
+        error.message || "로그인에 실패했습니다. 다시 시도해주세요."
+      );
     } finally {
       setLoading(false);
     }
