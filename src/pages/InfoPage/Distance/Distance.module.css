@@ -1,4 +1,4 @@
-.distance-ticket {
+.distanceTicket {
   width: 800px;
   height: 300px;
   border: 2px solid #000;
@@ -12,7 +12,7 @@
   background-color: #f8f9fa;
 }
 
-.distance-section {
+.distanceSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +33,7 @@
   text-align: right;
 }
 
-.train-path {
+.trainPath {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -42,7 +42,7 @@
   gap: 10px;
 }
 
-.train-icon {
+.trainIcon {
   font-size: 48px;
 }
 
@@ -51,7 +51,7 @@
   font-weight: 500;
 }
 
-.distance-info {
+.distanceInfo {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -62,7 +62,7 @@
   font-size: 24px;
 }
 
-.date-label {
+.dateLabel {
   font-size: 20px;
   color: #6c757d;
 }

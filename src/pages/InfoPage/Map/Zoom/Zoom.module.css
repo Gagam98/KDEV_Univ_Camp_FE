@@ -1,4 +1,4 @@
-.status-left-bottom {
+.statusLeftBottom {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -7,7 +7,7 @@
   gap: 10px;
 }
 
-.zoom-control {
+.zoomControl {
   position: absolute;
   bottom: 10px;
   right: 10px;

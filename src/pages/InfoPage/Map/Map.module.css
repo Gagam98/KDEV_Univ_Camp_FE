@@ -1,11 +1,11 @@
-.map-wrapper {
+.mapWrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.status-left-bottom {
+.statusLeftBottom {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -14,6 +14,6 @@
   gap: 10px;
 }
 
-#map {
+.mapContainer {
   height: 100%;
 }

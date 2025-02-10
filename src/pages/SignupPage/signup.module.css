@@ -1,20 +1,20 @@
-.login-page {
+.signupPage {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 수직 중앙 정렬 */
-  align-items: center; /* 수평 중앙 정렬 */
-  margin: 0; /* 기본 margin 제거 */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-.login-page h1 {
+.signupPage h1 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
-  text-align: center; /* 제목 가운데 정렬 */
+  text-align: center;
 }
 
-.login-page form {
+.signupPage form {
   width: 400px;
   background-color: #fff;
   padding: 20px;
@@ -22,14 +22,14 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   display: flex;
-  flex-direction: column; /* 폼 내부 요소를 세로로 정렬 */
+  flex-direction: column;
 }
 
-.login-page form div {
+.signupPage form div {
   margin-bottom: 15px;
 }
 
-.login-page form label {
+.signupPage form label {
   display: block;
   font-size: 14px;
   font-weight: bold;
@@ -37,7 +37,7 @@
   color: #555;
 }
 
-.login-page form input {
+.signupPage form input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -46,24 +46,24 @@
   box-sizing: border-box;
 }
 
-.login-page form input:focus {
+.signupPage form input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
 }
 
-.login-submit-button {
+.signupSubmitButton {
   width: 100%;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #28a745;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.login-submit-button:hover {
-  background-color: #0056b3;
+.signupSubmitButton:hover {
+  background-color: #218838;
 }

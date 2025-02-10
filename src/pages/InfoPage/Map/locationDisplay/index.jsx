@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
-import "@@/InfoPage/Map/LocationDisplay/LocationDisplay.css";
-import { useCallback } from "react";
+import styles from "./LocationDisplay.module.css";
 
 const LocationDisplay = () => {
   const [location, setLocation] = useState("Loading...");
@@ -39,7 +38,7 @@ const LocationDisplay = () => {
 
   useKakaoMapLoader(initializeLocation);
 
-  return <div className="location-display">{location}</div>;
+  return <div className={styles.locationDisplay}>{location}</div>;
 };
 
 export default LocationDisplay;

@@ -4,28 +4,26 @@ import LocationDisplay from "@@/InfoPage/Map/LocationDisplay";
 import DrivingStatus from "@@/InfoPage/Map/DrivingStatus";
 import Battery from "@@/InfoPage/Map/Battery";
 import Zoom from "@@/InfoPage/Map/Zoom";
-import { MapProvider } from "@@/InfoPage/Map/MapProvider";
-import "@@/InfoPage/Map/Map.css";
+import { useMapDetails } from "@@/InfoPage/Map/MapProvider";
+import styles from "@@/InfoPage/Map/Map.module.css";
 
 const Map = () => {
-  const { map, setSelectedDate } = MapProvider();
+  const { map, setSelectedDate } = useMapDetails();
 
   return (
     <>
-      <div id="map"></div>
-      <div className="map-page">
+      <div id="map" className={styles.mapContainer}></div>
+      <div className={styles.mapPage}>
         <LocationDisplay />
-        <div className="date-container">
+        <div className={styles.dateContainer}>
           <DateSelector onDateChange={setSelectedDate} />
         </div>
 
-        <div className="map-wrapper">
-          <div id="map" className="map-container"></div>
-          <div className="status-left-bottom">
+        <div className={styles.mapWrapper}>
+          <div className={styles.statusLeftBottom}>
             <DrivingStatus status="운행중" />
             <Battery level={50} isCharging={true} />
           </div>
-
           <Zoom mapInstance={map} />
         </div>
       </div>

@@ -1,4 +1,4 @@
-.status-container {
+.statusContainer {
   width: 80px;
   height: 50px;
   display: flex;
@@ -11,39 +11,39 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.status-circle {
+.statusCircle {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   margin-right: 8px;
 }
 
-.status-running .status-circle {
+.statusRunning .statusCircle {
   background-color: green;
 }
 
-.status-stopped .status-circle {
+.statusStopped .statusCircle {
   background-color: red;
 }
 
-.status-unmonitored .status-circle {
+.statusUnmonitored .statusCircle {
   background-color: gray;
 }
 
-.status-text {
+.statusText {
   color: white;
   font-size: 14px;
   font-weight: bold;
 }
 
-.status-running .status-text {
+.statusRunning .statusText {
   text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8);
 }
 
-.status-stopped .status-text {
+.statusStopped .statusText {
   text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.8);
 }
 
-.status-unmonitored .status-text {
+.statusUnmonitored .statusText {
   text-shadow: 0px 0px 5px rgba(128, 128, 128, 0.8);
 }

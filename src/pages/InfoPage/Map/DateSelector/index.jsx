@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import calendarIcon from "@/assets/calendar.png";
-import "@@/InfoPage/Map/DateSelector/DateSelector.css";
+import styles from "./DateSelector.module.css";
 
 const DateSelector = ({ onDateRangeChange, onIntervalChange }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -30,14 +30,18 @@ const DateSelector = ({ onDateRangeChange, onIntervalChange }) => {
   };
 
   return (
-    <div className="date-selector">
-      <div className="date-display" onClick={toggleCalendars}>
-        <img src={calendarIcon} alt="Calendar Icon" className="calendar-icon" />
-        <span className="selected-date">
+    <div className={styles.dateSelector}>
+      <div className={styles.dateDisplay} onClick={toggleCalendars}>
+        <img
+          src={calendarIcon}
+          alt="Calendar Icon"
+          className={styles.calendarIcon}
+        />
+        <span className={styles.selectedDate}>
           {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
         </span>
       </div>
-      <div className="interval-selector">
+      <div className={styles.intervalSelector}>
         <select
           value={selectedInterval}
           onChange={(e) => handleIntervalChange(parseInt(e.target.value, 10))}
@@ -48,13 +52,13 @@ const DateSelector = ({ onDateRangeChange, onIntervalChange }) => {
         </select>
       </div>
       {showCalendars && (
-        <div className="calendar-popup">
-          <div className="calendar-wrapper">
-            <div className="calendar-item">
+        <div className={styles.calendarPopup}>
+          <div className={styles.calendarWrapper}>
+            <div className={styles.calendarItem}>
               <h4>Start Date</h4>
               <Calendar onChange={handleStartDateChange} value={startDate} />
             </div>
-            <div className="calendar-item">
+            <div className={styles.calendarItem}>
               <h4>End Date</h4>
               <Calendar onChange={handleEndDateChange} value={endDate} />
             </div>

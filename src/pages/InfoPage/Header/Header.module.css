@@ -1,4 +1,4 @@
-.info-page {
+.infoPage {
   padding: 40px;
   padding-top: 120px; /* 안움직임(확인필요) */
   display: flex;
@@ -18,13 +18,13 @@
   border-radius: 8px;
 }
 
-.search-container {
+.searchContainer {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-.search-input {
+.searchInput {
   width: 100%;
   max-width: 400px;
   padding: 10px;
@@ -33,7 +33,7 @@
   outline: none;
 }
 
-.nickname-display {
+.nicknameDisplay {
   margin-left: auto;
   font-weight: bold;
 }

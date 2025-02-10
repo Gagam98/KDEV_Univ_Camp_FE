@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
-import "@@/LoginPage/login.css";
+import styles from "./LoginPage.module.css";
 
 const LoginPage = ({ setNickname }) => {
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,6 @@ const LoginPage = ({ setNickname }) => {
       const response = await login(id, password);
       const { token } = response;
 
-      // 토큰 저장 및 사용자 정보 디코딩
       saveTokenToStorage(token);
       const userInfo = getUserInfoFromToken(token);
 
@@ -49,7 +48,7 @@ const LoginPage = ({ setNickname }) => {
   };
 
   return (
-    <div className="login-page">
+    <div className={styles.loginPage}>
       <h1>로그인</h1>
       <form onSubmit={handleLogin}>
         <div>
@@ -72,7 +71,7 @@ const LoginPage = ({ setNickname }) => {
         </div>
         <button
           type="submit"
-          className="login-submit-button"
+          className={styles.loginSubmitButton}
           disabled={loading}
         >
           {loading ? "로그인 중..." : "로그인"}

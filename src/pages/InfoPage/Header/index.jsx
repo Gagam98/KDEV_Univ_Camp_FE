@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserInfo } from "@/api/signupApi";
-import "@@/InfoPage/infoPage.css";
+import styles from "./Header.module.css";
 
 export default function InfoPage() {
   const [nickname, setNickname] = useState("Guest");
@@ -20,12 +20,16 @@ export default function InfoPage() {
   };
 
   return (
-    <div className="info-page">
-      <div className="header">
-        <div className="search-container">
-          <input type="text" placeholder="Search..." className="search-input" />
+    <div className={styles.infoPage}>
+      <div className={styles.header}>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="Search..."
+            className={styles.searchInput}
+          />
         </div>
-        <span className="nickname-display">
+        <span className={styles.nicknameDisplay}>
           {isLoading ? "Loading..." : nickname}
         </span>
         {nickname !== "Guest" && <button onClick={handleLogout}>Logout</button>}

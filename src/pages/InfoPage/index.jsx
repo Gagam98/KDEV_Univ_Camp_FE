@@ -3,7 +3,7 @@ import Map from "@@/InfoPage/Map";
 import Distance from "@@/InfoPage/Distance";
 import Header from "@@/InfoPage/Header";
 import { getUserInfo } from "@/api/signupApi";
-import "@@/InfoPage/infoPage.css";
+import styles from "./InfoPage.module.css";
 
 export default function InfoPage() {
   const [nickname, setNickname] = useState("Guest");
@@ -13,15 +13,15 @@ export default function InfoPage() {
   }, []);
 
   return (
-    <div className="info-page">
+    <div className={styles.infoPage}>
       <Header nickname={nickname} initial={nickname.charAt(0).toUpperCase()} />
-      <div className="info-content">
-        <div className="map-section">
-          <div className="map-wrapper">
+      <div className={styles.infoContent}>
+        <div className={styles.mapSection}>
+          <div className={styles.mapWrapper}>
             <Map />
           </div>
         </div>
-        <div className="distance-section">
+        <div className={styles.distanceSection}>
           <Distance />
         </div>
       </div>

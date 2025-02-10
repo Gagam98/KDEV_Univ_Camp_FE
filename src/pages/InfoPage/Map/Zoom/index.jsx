@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "@@/InfoPage/Map/Zoom/Zoom.css";
+import styles from "./Zoom.module.css";
 
 const Zoom = ({ mapInstance }) => {
   useEffect(() => {

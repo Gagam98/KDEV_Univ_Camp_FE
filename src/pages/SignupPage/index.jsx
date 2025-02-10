@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup } from "@/api/signupApi";
-import "@/pages/SignupPage/signup.css";
+import styles from "@/pages/SignupPage/SignupPage.module.css";
 
 const SignupPage = () => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-page">
+    <div className={styles.signupPage}>
       <h1>회원가입</h1>
       <form onSubmit={handleSignup}>
         <div>
@@ -70,7 +70,7 @@ const SignupPage = () => {
         </div>
         <button
           type="submit"
-          className="signup-submit-button"
+          className={styles.signupSubmitButton}
           disabled={loading}
         >
           {loading ? "회원가입 중..." : "회원가입"}

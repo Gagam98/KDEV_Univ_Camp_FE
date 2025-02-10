@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import carIcon from "@/assets/carMarker.png";
+import styles from "./MapProvider.module.css";
 
 export const MapProvider = () => {
   const [positions, setPositions] = useState([]);
@@ -33,10 +34,9 @@ export const MapProvider = () => {
   const trackLocation = (mapInstance) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+        const { latitude, longitude } = position.coords;
 
-        const newPosition = new window.kakao.maps.LatLng(lat, lon);
+        const newPosition = new window.kakao.maps.LatLng(latitude, longitude);
         setPositions([newPosition]);
 
         displayMarker(newPosition, true, mapInstance);
@@ -87,3 +87,5 @@ export const MapProvider = () => {
 
   return { map, setSelectedDate };
 };
+
+export default MapProvider;

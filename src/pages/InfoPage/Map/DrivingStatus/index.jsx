@@ -1,24 +1,24 @@
 import React from "react";
-import "@@/InfoPage/Map/DrivingStatus/DrivingStatus.css";
+import styles from "./DrivingStatus.module.css";
 
 const DrivingStatus = ({ status }) => {
   const getStatusClass = () => {
     switch (status) {
       case "운행중":
-        return "status-running";
+        return styles.statusRunning;
       case "미운행":
-        return "status-stopped";
+        return styles.statusStopped;
       case "미관제":
-        return "status-unmonitored";
+        return styles.statusUnmonitored;
       default:
         return "";
     }
   };
 
   return (
-    <div className={`status-container ${getStatusClass()}`}>
-      <span className="status-circle"></span>
-      <span className="status-text">{status}</span>
+    <div className={`${styles.statusContainer} ${getStatusClass()}`}>
+      <span className={styles.statusCircle}></span>
+      <span className={styles.statusText}>{status}</span>
     </div>
   );
 };

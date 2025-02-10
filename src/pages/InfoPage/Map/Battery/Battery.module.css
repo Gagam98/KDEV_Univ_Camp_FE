@@ -1,16 +1,4 @@
-.status-left-bottom {
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  z-index: 100;
-}
-
-.battery-overlay {
+.batteryOverlay {
   width: 90px;
   height: 60px;
   display: flex;
@@ -19,7 +7,7 @@
   z-index: 9;
 }
 
-.battery-box {
+.batteryBox {
   position: relative;
   width: 80px;
   height: 40px;
@@ -29,13 +17,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-.battery-progress {
+.batteryProgress {
   height: 100%;
   background: #ffffff;
   transition: width 0.5s ease;
 }
 
-.battery-cap {
+.batteryCap {
   position: absolute;
   top: 12px;
   right: -5px;
@@ -46,20 +34,20 @@
   z-index: 10;
 }
 
-.charging-icon {
+.chargingIcon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.charging-icon-symbol {
+.chargingIconSymbol {
   font-size: 16px;
   color: #ffffff;
   text-shadow: 0px 0px 3px #000000;
 }
 
-.battery-text {
+.batteryText {
   position: absolute;
   bottom: 4px;
   right: 4px;
