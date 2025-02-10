@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import carIcon from "@/assets/carMarker.png";
-import styles from "./MapProvider.module.css";
 
 export const MapProvider = () => {
   const [positions, setPositions] = useState([]);

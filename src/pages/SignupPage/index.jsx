@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup } from "@/api/signupApi";
-import styles from "@/pages/SignupPage/SignupPage.module.css";
+import styles from "./signup.module.css";
 
 const SignupPage = () => {
   const [loading, setLoading] = useState(false);

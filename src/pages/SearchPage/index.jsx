@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { initializeSearchInput, cleanupSearchInput } from "@/api/SearchApi";
 import AuthButtons from "@@/SearchPage/Header";
-import styles from "@@/SearchPage/SearchPage.module.css";
+import styles from "./Search.module.css";
 
 export default function SearchPage() {
   useEffect(() => {

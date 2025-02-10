@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
-import styles from "./LoginPage.module.css";
+import styles from "./login.module.css";
 
 const LoginPage = ({ setNickname }) => {
   const [loading, setLoading] = useState(false);
