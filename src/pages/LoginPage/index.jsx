@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
-import { saveTokenToStorage, getUserInfoFromToken } from "@/utils/auth";
 import "@@/LoginPage/login.css";
 
 const LoginPage = ({ setNickname }) => {

@@ -1,6 +1,6 @@
 .info-page {
   padding: 40px;
-  padding-top: 120px; /* 안움직임 */
+  padding-top: 120px; /* 안움직임(확인필요) */
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
 import carIcon from "@/assets/carMarker.png";
 
-const useMapDetails = () => {
+export const MapProvider = () => {
   const [positions, setPositions] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [map, setMap] = useState(null);
@@ -87,5 +87,3 @@ const useMapDetails = () => {
 
   return { map, setSelectedDate };
 };
-
-export default useMapDetails;
