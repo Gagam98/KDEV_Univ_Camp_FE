@@ -1,27 +1,15 @@
-.infoPage {
-  padding: 40px;
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
+  /*width: 100%;*/
+  height: 80px;
   background-color: #f0f0f0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .searchContainer {
   flex: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .searchInput {
@@ -33,7 +21,25 @@
   outline: none;
 }
 
+.nicknameContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .nicknameDisplay {
-  margin-left: auto;
   font-weight: bold;
 }

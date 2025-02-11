@@ -29,10 +29,15 @@ export default function InfoPage() {
             className={styles.searchInput}
           />
         </div>
-        <span className={styles.nicknameDisplay}>
-          {isLoading ? "Loading..." : nickname}
-        </span>
-        {nickname !== "Guest" && <button onClick={handleLogout}>Logout</button>}
+        <div className={styles.nicknameContainer}>
+          <span className={styles.nicknameDisplay}>
+            {isLoading ? "Loading..." : nickname}
+          </span>
+          <div className={styles.avatarCircle}>{nickname.charAt(0)}</div>
+          {nickname !== "Guest" && (
+            <button onClick={handleLogout}>Logout</button>
+          )}
+        </div>
       </div>
     </div>
   );

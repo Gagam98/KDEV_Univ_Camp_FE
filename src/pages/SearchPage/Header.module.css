@@ -16,24 +16,3 @@
   width: auto;
   cursor: pointer;
 }
-
-.authButtons {
-  display: flex;
-  gap: 10px;
-}
-
-.authButtons button {
-  background: none;
-  color: var(--btn-txt-color, #ffffff);
-  border: none;
-  padding: 10px 20px;
-  font-family: var(--font-main, "Helvetica", "Arial", sans-serif);
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: color 200ms ease;
-}
-
-.authButtons button:hover {
-  color: var(--hover-txt-color, #00dbff);
-}

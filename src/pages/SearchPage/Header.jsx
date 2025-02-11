@@ -1,9 +1,34 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "@/api/signupApi.js";
 import styles from "./Header.module.css";
 import logo from "@/assets/logo.png";
 
 export default function Header() {
   const navigate = useNavigate();
+  const searchRef = useRef(null);
+  const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    async function fetchUserInfo() {
+      try {
+        const userInfo = await getUserInfo();
+        setNickname(userInfo.nickname);
+      } catch (error) {
+        console.error("사용자 정보 가져오기 실패:", error);
+      }
+    }
+
+    fetchUserInfo();
+
+    const timeout = setTimeout(() => {
+      if (searchRef.current) {
+        searchRef.current.classList.add(styles.expand);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div className={styles.headerContainer}>
@@ -13,16 +38,13 @@ export default function Header() {
         className={styles.logo}
         onClick={() => navigate("/")}
       />
-      <div className={styles.authButtons}>
-        <button onClick={() => navigate("/login")} className={styles.loginBtn}>
-          로그인
-        </button>
-        <button
-          onClick={() => navigate("/signup")}
-          className={styles.signupBtn}
-        >
-          회원가입
-        </button>
+
+      <div className={styles.userInfo}>
+        {nickname ? (
+          <span className={styles.nickname}>{nickname}</span>
+        ) : (
+          <span>Loading...</span>
+        )}
       </div>
     </div>
   );

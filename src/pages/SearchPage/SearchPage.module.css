@@ -1,0 +1,57 @@
+.pageBackground {
+  height: 100vh;
+  width: 100%;
+  background: url("@/assets/background.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+  --icn-color: #ffffff;
+  --font-main: "Roboto", "Noto Sans KR", sans-serif;
+  --font-alt: "monospace";
+}
+
+.pageBackground::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 13px;
+  font-family: var(--font-alt);
+  color: var(--txt-color);
+}
+
+.searchTitleText {
+  font-family: var(--font-main);
+  font-size: 44px;
+  font-weight: 200;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+.cntr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.cntrInnr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
