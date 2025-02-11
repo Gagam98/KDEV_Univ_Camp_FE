@@ -1,20 +1,40 @@
 .header {
-  /*width: 100%;*/
   height: 80px;
   background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoImage {
+  width: 150px;
+  height: auto;
+  cursor: pointer;
 }
 
 .searchContainer {
-  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .searchInput {
-  width: 100%;
-  max-width: 400px;
+  width: 350px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -24,7 +44,7 @@
 .nicknameContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .avatarCircle {

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
-import styles from "./login.module.css";
+import "@@/LoginPage/login.module.css";
 
 const LoginPage = ({ setNickname }) => {
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ const LoginPage = ({ setNickname }) => {
   };
 
   return (
-    <div className={styles.loginPage}>
+    <div className="login-page">
       <h1>로그인</h1>
       <form onSubmit={handleLogin}>
         <div>
@@ -71,7 +71,7 @@ const LoginPage = ({ setNickname }) => {
         </div>
         <button
           type="submit"
-          className={styles.loginSubmitButton}
+          className="login-submit-button"
           disabled={loading}
         >
           {loading ? "로그인 중..." : "로그인"}

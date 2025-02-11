@@ -15,7 +15,7 @@ export const signup = async (id, password, nickname) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id, password, nickname }),
-      credentials: "include", // 인증 정보 포함
+      credentials: "include",
     });
 
     if (!response.ok) {
