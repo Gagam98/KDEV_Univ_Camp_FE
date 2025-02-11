@@ -4,6 +4,7 @@ import Distance from "@@/InfoPage/Distance";
 import Header from "@@/InfoPage/Header";
 import { getUserInfo } from "@/api/signupApi";
 import styles from "./InfoPage.module.css";
+import AllVehicles from "@@/InfoPage/AllVehicles";
 
 export default function InfoPage() {
   const [nickname, setNickname] = useState("Guest");
@@ -16,7 +17,9 @@ export default function InfoPage() {
     <div className={styles.infoPageContainer}>
       <div className={styles.mainContent}>
         <Header nickname={nickname} />
+
         <div className={styles.infoContent}>
+          <h2 className={styles.vehicleNumber}>12가 1234</h2>
           <div className={styles.mapSection}>
             <div className={styles.mapWrapper}>
               <Map />
@@ -24,6 +27,7 @@ export default function InfoPage() {
           </div>
           <div className={styles.distanceSection}>
             <Distance />
+            <AllVehicles />
           </div>
         </div>
       </div>

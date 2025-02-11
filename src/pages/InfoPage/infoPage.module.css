@@ -1,31 +1,33 @@
 .infoPageContainer {
   display: flex;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
 
 .mainContent {
-  flex: 1;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 .header {
-  /*width: 100%;*/
+  width: 100%;
   height: 80px;
   background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
-  left: 250px;
-  right: 0;
+  left: 0;
   z-index: 100;
-  max-width: calc(100% - 250px);
+  box-sizing: border-box;
 }
 
 .infoContent {
@@ -33,9 +35,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  padding: 100px 20px 20px;
+  gap: 20px;
+  padding: 30px 0px 0px;
   overflow-y: auto;
+  width: 100%;
+}
+
+.vehicleNumber {
+  align-self: flex-start;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .mapSection {
@@ -45,7 +57,8 @@
 }
 
 .mapWrapper {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   height: 400px;
   border-radius: 8px;
   overflow: hidden;
