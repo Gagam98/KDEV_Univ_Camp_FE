@@ -10,10 +10,22 @@ const LoginPage = ({ setNickname }) => {
   const passwordRef = useRef();
   const navigate = useNavigate();
 
+  // 토큰 저장 함수
+  const saveTokenToStorage = (token) => {
+    localStorage.setItem("userToken", token);
+  };
+
+  // 사용자 정보 추출 함수
+  const getUserInfoFromToken = (token) => {
+    if (!token) return null;
+    return {
+      nickname: localStorage.getItem("userNickname"),
+    };
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     const id = idRef.current.value;
     const password = passwordRef.current.value;
 
@@ -26,14 +38,13 @@ const LoginPage = ({ setNickname }) => {
     try {
       const response = await login(id, password);
       const { token } = response;
-
       saveTokenToStorage(token);
       const userInfo = getUserInfoFromToken(token);
 
       if (userInfo) {
         setNickname(userInfo.nickname);
         alert(`${userInfo.nickname}님, 로그인 성공!`);
-        navigate("/");
+        navigate("/search");
       } else {
         throw new Error("사용자 정보를 가져올 수 없습니다.");
       }
