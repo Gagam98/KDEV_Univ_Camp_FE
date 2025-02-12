@@ -45,16 +45,7 @@ export default function InfoPage() {
 
   return (
     <div className={styles.infoPage} style={{ marginTop: 0, paddingTop: 0 }}>
-      <div
-        className={styles.header}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          zIndex: 1000,
-        }}
-      >
+      <div className={styles.header}>
         <div className={styles.leftSection}>
           <div className={styles.logoContainer} onClick={() => navigate("/")}>
             <img src={logoImage} alt="Logo" className={styles.logoImage} />
@@ -78,10 +69,15 @@ export default function InfoPage() {
               className={styles.avatarCircle}
               onClick={() => setShowLogout(!showLogout)}
             >
-              {nickname.charAt(0).toUpperCase()}
+              {nickname.charAt(0)}
             </div>
             {showLogout && (
-              <div className={styles.logoutPopup} ref={popupRef}>
+              <div
+                className={`${styles.logoutPopup} ${
+                  showLogout ? styles.active : ""
+                }`}
+                ref={popupRef}
+              >
                 <button onClick={handleLogout} className={styles.logoutButton}>
                   Logout
                 </button>

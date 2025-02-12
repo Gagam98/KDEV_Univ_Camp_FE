@@ -6,8 +6,13 @@
   justify-content: space-between;
   padding: 0 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 0;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .leftSection {
@@ -26,6 +31,27 @@
   width: 150px;
   height: auto;
   cursor: pointer;
+}
+
+.logoutButton {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #00dbff;
+  transform: scale(1.05);
+}
+
+.logoutButton:active {
+  transform: scale(0.95);
 }
 
 .searchContainer {
@@ -58,6 +84,12 @@
   justify-content: center;
   font-weight: bold;
   font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.avatarCircle:hover {
+  background-color: #0056b3;
 }
 
 .nicknameDisplay {
