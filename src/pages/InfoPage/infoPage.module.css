@@ -1,17 +1,13 @@
 .infoPageContainer {
   display: flex;
   justify-content: center;
-  height: 100vh;
   width: 100vw;
-  overflow: hidden;
 }
 
 .mainContent {
   width: 1000px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
   padding-top: 80px;
   box-sizing: border-box;
 }
@@ -38,7 +34,6 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  overflow-y: auto;
   width: 100%;
 }
 
@@ -63,6 +58,7 @@
   background-color: #fff;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /*임시*/
 }
 
 .ticketSection {
