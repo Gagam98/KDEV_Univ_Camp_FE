@@ -1,6 +1,6 @@
 import styles from "./Ticket.module.css";
 import { useState, useEffect } from "react";
-import carImage from "@/assets/car.png"; // 🚗 PNG 파일 불러오기
+import carImage from "@/assets/car.png";
 
 export default function Ticket() {
   const duration = 4;

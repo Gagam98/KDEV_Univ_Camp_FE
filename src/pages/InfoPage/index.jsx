@@ -20,11 +20,11 @@ export default function InfoPage() {
 
         <div className={styles.infoContent}>
           <h2 className={styles.vehicleNumber}>12가 1234</h2>
-          <div className={styles.mapSection}>
+          {/* <div className={styles.mapSection}>
             <div className={styles.mapWrapper}>
               <Map />
             </div>
-          </div>
+          </div> */}
           <div className={styles.distanceSection}>
             <Ticket />
             <AllVehicles />

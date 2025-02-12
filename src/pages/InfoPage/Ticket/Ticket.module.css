@@ -63,6 +63,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: brightness(0) invert(1); /*자동차 이미지 색상 변경 검>흰*/
 }
 
 .ticket .line::before,
