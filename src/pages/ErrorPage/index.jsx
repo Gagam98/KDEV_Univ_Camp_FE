@@ -1,14 +1,17 @@
-import React from "react";
+// @@/ErrorPage/index.jsx
+import { useLocation } from "react-router-dom";
 
-const NoVehicleInfoPage = () => {
+const ErrorPage = () => {
+  const location = useLocation();
+  const { message, carNumber } = location.state || {};
+
   return (
-    <div className="no-vehicle-info-page">
-      <div className="message-container">
-        <h1 className="error-title">차량정보가 없습니다.</h1>
-        <p className="error-description">입력하신 정보를 다시 확인해 주세요.</p>
-      </div>
+    <div>
+      <h1>차량 조회 실패</h1>
+      <p>{message}</p>
+      <p>검색한 차량번호: {carNumber}</p>
     </div>
   );
 };
 
-export default NoVehicleInfoPage;
+export default ErrorPage;

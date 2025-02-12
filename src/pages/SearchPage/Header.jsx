@@ -18,7 +18,6 @@ export default function Header() {
         console.error("사용자 정보 가져오기 실패:", error);
       }
     }
-
     fetchUserInfo();
 
     const timeout = setTimeout(() => {
@@ -26,7 +25,6 @@ export default function Header() {
         searchRef.current.classList.add(styles.expand);
       }
     }, 1000);
-
     return () => clearTimeout(timeout);
   }, []);
 
@@ -38,12 +36,14 @@ export default function Header() {
         className={styles.logo}
         onClick={() => navigate("/")}
       />
-
       <div className={styles.userInfo}>
         {nickname ? (
-          <span className={styles.nickname}>{nickname}</span>
+          <>
+            <span className={styles.nickname}>{nickname}</span>
+            <div className={styles.avatarCircle}>{nickname.charAt(0)}</div>
+          </>
         ) : (
-          <span>Loading...</span>
+          <span className={styles.loading}>Loading...</span>
         )}
       </div>
     </div>

@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { searchCar } from "@/api/carApi";
 import Header from "./Header";
 import styles from "./SearchPage.module.css";
 import "./search.css";
@@ -7,6 +8,8 @@ import "./search.css";
 export default function SearchPage() {
   const navigate = useNavigate();
   const searchRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,6 +17,45 @@ export default function SearchPage() {
       searchRef.current.querySelector("input")?.focus();
     }, 1500);
   }, []);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const carNumber = searchRef.current.querySelector("input").value;
+
+    if (!carNumber) {
+      alert("차량번호를 입력해주세요.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const result = await searchCar(carNumber);
+
+      if (!result.exists) {
+        // 차량이 존재하지 않는 경우 ErrorPage로 이동
+        navigate("/error", {
+          state: {
+            message: "차량을 찾을 수 없습니다.",
+            carNumber,
+          },
+        });
+      } else {
+        // 차량이 존재하는 경우 InfoPage로 이동
+        navigate("/info", {
+          state: {
+            carInfo: result.data,
+          },
+        });
+      }
+    } catch (error) {
+      console.error("검색 에러:", error);
+      setError(error.message || "차량 조회에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={styles.pageBackground}>
@@ -24,10 +66,19 @@ export default function SearchPage() {
           style={{ transform: "translateY(-100px)" }}
         >
           <div className={styles.searchTitleText}>차량번호를 입력하세요.</div>
-          <div id="main-search" class="mini" ref={searchRef}>
-            <input type="text" />
-            <button>검색</button>
-          </div>
+          <form onSubmit={handleSearch}>
+            <div id="main-search" className="mini" ref={searchRef}>
+              <input
+                type="text"
+                placeholder="  예:12가1234"
+                disabled={loading}
+              />
+              <button type="submit" disabled={loading}>
+                {loading ? "검색 중..." : "검색"}
+              </button>
+            </div>
+            {error && <p className={styles.errorText}>{error}</p>}
+          </form>
         </div>
       </div>
     </div>

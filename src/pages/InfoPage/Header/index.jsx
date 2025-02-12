@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "@/api/signupApi";
 import styles from "./Header.module.css";
@@ -7,7 +7,9 @@ import logoImage from "@/assets/logo.png";
 export default function InfoPage() {
   const [nickname, setNickname] = useState("Guest");
   const [isLoading, setIsLoading] = useState(true);
+  const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
+  const popupRef = useRef(null);
 
   useEffect(() => {
     getUserInfo()
@@ -20,11 +22,39 @@ export default function InfoPage() {
     localStorage.removeItem("nickname");
     setNickname("Guest");
     console.log("로그아웃되었습니다.");
+    setShowLogout(false);
+    navigate("/login");
   };
 
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setShowLogout(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showLogout) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showLogout]);
+
   return (
-    <div className={styles.infoPage}>
-      <div className={styles.header}>
+    <div className={styles.infoPage} style={{ marginTop: 0, paddingTop: 0 }}>
+      <div
+        className={styles.header}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 1000,
+        }}
+      >
         <div className={styles.leftSection}>
           <div className={styles.logoContainer} onClick={() => navigate("/")}>
             <img src={logoImage} alt="Logo" className={styles.logoImage} />
@@ -39,19 +69,26 @@ export default function InfoPage() {
           </div>
         </div>
 
-        <div className={styles.nicknameContainer}>
-          <span className={styles.nicknameDisplay}>
-            {isLoading ? "Loading..." : nickname}
-          </span>
-          <div className={styles.avatarCircle}>
-            {nickname.charAt(0).toUpperCase()}
+        {nickname !== "Guest" && (
+          <div className={styles.nicknameContainer}>
+            <span className={styles.nicknameDisplay}>
+              {isLoading ? "Loading..." : nickname}
+            </span>
+            <div
+              className={styles.avatarCircle}
+              onClick={() => setShowLogout(!showLogout)}
+            >
+              {nickname.charAt(0).toUpperCase()}
+            </div>
+            {showLogout && (
+              <div className={styles.logoutPopup} ref={popupRef}>
+                <button onClick={handleLogout} className={styles.logoutButton}>
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
-          {nickname !== "Guest" && (
-            <button onClick={handleLogout} className={styles.logoutButton}>
-              Logout
-            </button>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

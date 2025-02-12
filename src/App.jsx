@@ -5,6 +5,7 @@ import LoginPage from "@@/LoginPage";
 import SignupPage from "@@/SignupPage";
 import InfoPage from "@@/InfoPage";
 import styles from "@/App.module.css";
+import ErrorPage from "@@/ErrorPage";
 
 function App() {
   const [nickname, setNickname] = useState("");
@@ -20,6 +21,7 @@ function App() {
         <Route path="/info" element={<InfoPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/" element={<LoginPage setNickname={setNickname} />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </div>
   );
