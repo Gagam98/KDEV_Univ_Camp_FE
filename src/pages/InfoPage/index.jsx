@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Map from "@@/InfoPage/Map";
-import Distance from "@@/InfoPage/Distance";
+import Ticket from "@@/InfoPage/Ticket";
 import Header from "@@/InfoPage/Header";
 import { getUserInfo } from "@/api/signupApi";
 import styles from "./InfoPage.module.css";
@@ -26,7 +26,7 @@ export default function InfoPage() {
             </div>
           </div>
           <div className={styles.distanceSection}>
-            <Distance />
+            <Ticket />
             <AllVehicles />
           </div>
         </div>
