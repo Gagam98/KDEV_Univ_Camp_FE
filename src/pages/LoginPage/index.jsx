@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/api/loginApi";
-import "@@/LoginPage/login.module.css";
+import styles from "./login.module.css";
 
 const LoginPage = ({ setNickname }) => {
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ const LoginPage = ({ setNickname }) => {
   };
 
   return (
-    <div className="login-page">
+    <div className={styles.loginPage}>
       <h1>로그인</h1>
       <form onSubmit={handleLogin}>
         <div>
@@ -58,6 +58,7 @@ const LoginPage = ({ setNickname }) => {
             type="text"
             id="id"
             placeholder="아이디를 입력하세요"
+            className={styles.inputField}
           />
         </div>
         <div>
@@ -67,17 +68,24 @@ const LoginPage = ({ setNickname }) => {
             type="password"
             id="password"
             placeholder="비밀번호를 입력하세요"
+            className={styles.inputField}
           />
         </div>
         <button
           type="submit"
-          className="login-submit-button"
+          className={styles.loginSubmitButton}
           disabled={loading}
         >
           {loading ? "로그인 중..." : "로그인"}
         </button>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
+      <p className={styles.signupText}>
+        아직 회원이 아닌가요?{" "}
+        <span className={styles.signupLink} onClick={() => navigate("/signup")}>
+          <strong>회원가입하기</strong>
+        </span>
+      </p>
     </div>
   );
 };

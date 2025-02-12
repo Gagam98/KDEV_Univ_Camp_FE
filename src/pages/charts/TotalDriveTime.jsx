@@ -1,6 +1,6 @@
 import * as echarts from "echarts";
 import { useEffect, useRef } from "react";
-import "./common.module.css";
+import styles from "./common.module.css";
 import clsx from "clsx";
 
 export default function TotalDriveTime() {

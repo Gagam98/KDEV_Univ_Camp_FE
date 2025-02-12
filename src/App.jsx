@@ -12,13 +12,14 @@ function App() {
   return (
     <div className={styles.appContainer}>
       <Routes>
-        <Route path="/" element={<SearchPage />} />
         <Route
           path="/login"
           element={<LoginPage setNickname={setNickname} />}
         />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/info" element={<InfoPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/" element={<LoginPage setNickname={setNickname} />} />
       </Routes>
     </div>
   );

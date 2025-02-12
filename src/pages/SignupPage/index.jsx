@@ -48,6 +48,7 @@ const SignupPage = () => {
             type="text"
             id="id"
             placeholder="아이디를 입력하세요"
+            className={styles.inputField}
           />
         </div>
         <div>
@@ -57,6 +58,7 @@ const SignupPage = () => {
             type="password"
             id="password"
             placeholder="비밀번호를 입력하세요"
+            className={styles.inputField}
           />
         </div>
         <div>
@@ -66,6 +68,7 @@ const SignupPage = () => {
             type="text"
             id="nickname"
             placeholder="닉네임을 입력하세요"
+            className={styles.inputField}
           />
         </div>
         <button
@@ -77,6 +80,13 @@ const SignupPage = () => {
         </button>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
+      <p className={styles.loginText}>
+        이미 회원이신가요?{" "}
+        <span className={styles.loginLink} onClick={() => navigate("/login")}>
+          {" "}
+          <strong>로그인하기</strong>{" "}
+        </span>
+      </p>
     </div>
   );
 };

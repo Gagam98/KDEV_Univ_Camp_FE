@@ -4,10 +4,12 @@
   justify-content: center;
   align-items: center;
   margin: 0;
+  min-height: 100vh; /* 화면 중앙 정렬 유지 */
+  background-color: #f8f9fa; /* 배경 색 추가 */
 }
 
 .signupPage h1 {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
@@ -17,16 +19,16 @@
 .signupPage form {
   width: 400px;
   background-color: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
 .signupPage form div {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .signupPage form label {
@@ -34,13 +36,13 @@
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #555;
+  color: #444;
 }
 
 .signupPage form input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
@@ -49,12 +51,12 @@
 .signupPage form input:focus {
   outline: none;
   border-color: #28a745;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  box-shadow: 0 0 6px rgba(40, 167, 69, 0.6);
 }
 
 .signupSubmitButton {
   width: 100%;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: none;
   border-radius: 4px;
   background-color: #28a745;
@@ -62,6 +64,7 @@
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .signupSubmitButton:hover {
