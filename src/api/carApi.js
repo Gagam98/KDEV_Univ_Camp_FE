@@ -8,7 +8,9 @@ import { BASE_URL } from "./config";
 export const searchCarInfo = async (carNumber) => {
   try {
     const token = localStorage.getItem("userToken");
-    const response = await fetch(`${BASE_URL}/api/vehicle-status/${carNumber}`, {
+    const response = await fetch(
+      `${BASE_URL}/api/vehicle-status/details/${carNumber}`,
+      {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

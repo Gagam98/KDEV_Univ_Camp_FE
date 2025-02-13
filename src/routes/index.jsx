@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
 import { requiresAuth } from "./loaders";
 import SearchPage from "./pages/SearchPage";
 import LoginPage from "./pages/LoginPage";
@@ -8,32 +12,33 @@ import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    loader: () => redirect("/login")
+    path: "/",
+    loader: () => redirect("/login"),
   },
   {
-    path: '/login',
-    element: <LoginPage />
+    path: "/login",
+    element: <LoginPage />,
   },
   {
-    path: '/signup',
-    element: <SignupPage />
+    path: "/signup",
+    element: <SignupPage />,
   },
   {
-    path: '/info',
+    path: "/info",
     loader: requiresAuth,
-    element: <InfoPage />
+    element: <InfoPage />,
   },
   {
-    path: '/search',
+    path: "/search",
     loader: requiresAuth,
-    element: <SearchPage />
+    element: <SearchPage />,
   },
   {
-    path: '/error',
-    element: <ErrorPage />
-  }])
+    path: "/error",
+    element: <ErrorPage />,
+  },
+]);
 
 export default function Router() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
