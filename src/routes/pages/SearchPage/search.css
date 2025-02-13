@@ -42,6 +42,9 @@
   color: var(--color-default);
   text-align: center;
 }
+#main-search input::placeholder {
+  opacity: 1;
+}
 #main-search button {
   position: absolute;
   right: var(--button-margin);
@@ -68,6 +71,9 @@
 #main-search.mini::after {
   opacity: 1;
   visibility: visible;
+}
+#main-search.mini input::placeholder {
+  opacity: 0;
 }
 #main-search.mini button {
   opacity: 0;

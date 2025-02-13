@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { login } from "@/api/loginApi";
 import { useUserStore } from "@/stores/user";
 import styles from "./login.module.css";
 
 const LoginPage = () => {
-  const logIn = useUserStore(state => state.logIn);
+  const logIn = useUserStore((state) => state.logIn);
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     setLoading(true);
     const formData = new FormData(e.target);
     const id = formData.get("id");
@@ -27,7 +26,7 @@ const LoginPage = () => {
     }
 
     try {
-      const user = await logIn(id, password)
+      const user = await logIn(id, password);
       alert(`${user.nickname}님, 로그인 성공!`);
       navigate("/search");
     } catch (error) {

@@ -1,11 +1,11 @@
 .header {
   height: 80px;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 0;
   box-sizing: border-box;
   position: fixed;
@@ -66,31 +66,66 @@
   outline: none;
 }
 
-.nicknameContainer {
+.userInfo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+}
+.nickname {
+  color: #fff;
+  font-weight: 500;
 }
 
 .avatarCircle {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: #007bff;
-  color: white;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.avatarCircle:hover {
-  background-color: #0056b3;
+.popupContainer {
+  position: relative;
+  width: min-content;
 }
 
-.nicknameDisplay {
-  font-weight: bold;
+.popup {
+  width: 140px;
+  padding: 4px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+.showPopup {
+  opacity: 1;
+  visibility: visible;
+}
+.popup ul {
+  padding: 4px 0;
+  border-bottom: 1px solid #ccc;
+}
+.popup ul:last-child {
+  border-bottom: none;
+}
+.popup li {
+  display: block;
+  padding: 10px 14px;
+  color: inherit;
+  text-decoration: none;
+}
+.popup li:hover {
+  background-color: #ccc;
 }

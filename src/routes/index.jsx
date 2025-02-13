@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import InfoPage from "./pages/InfoPage";
 import ErrorPage from "./pages/ErrorPage";
+import MapPage from "./pages/MapPage";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +25,14 @@ const router = createBrowserRouter([
     element: <SignupPage />,
   },
   {
-    path: "/info",
+    path: "/info/:carNumber",
     loader: requiresAuth,
     element: <InfoPage />,
+  },
+  {
+    path: "/map",
+    loader: requiresAuth,
+    element: <MapPage />,
   },
   {
     path: "/search",

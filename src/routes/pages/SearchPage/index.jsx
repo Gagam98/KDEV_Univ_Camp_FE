@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
-import Header from "./Header";
+import Header from "@/components/Header";
 import styles from "./SearchPage.module.css";
 import "./search.css";
 
 export default function SearchPage() {
   const navigate = useNavigate();
-  
+
   const searchRef = useRef();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -16,7 +16,7 @@ export default function SearchPage() {
     setTimeout(() => {
       searchRef.current.classList.remove("mini");
       searchRef.current.querySelector("input")?.focus();
-    }, 1500);
+    }, 500);
   }, []);
 
   async function handleSearch(e) {
@@ -45,7 +45,7 @@ export default function SearchPage() {
         });
       } else {
         // 차량이 존재하는 경우 InfoPage로 이동
-        navigate("/info", {
+        navigate(`/info/${carNumber}`, {
           state: {
             carInfo: result.data,
           },
@@ -57,7 +57,7 @@ export default function SearchPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className={styles.pageBackground}>
@@ -65,13 +65,14 @@ export default function SearchPage() {
       <div className={styles.cntr}>
         <div
           className={styles.cntrInnr}
-          style={{ transform: "translateY(-80px)" }}>
+          style={{ transform: "translateY(-80px)" }}
+        >
           <div className={styles.searchTitleText}>차량번호를 입력하세요.</div>
           <form onSubmit={handleSearch}>
             <div id="main-search" className="mini" ref={searchRef}>
               <input
                 name="carNumber"
-                placeholder="  예:12가1234"
+                placeholder="예:12가1234"
                 disabled={loading}
               />
               <button type="submit" disabled={loading}>
