@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Map from "@@/InfoPage/Map";
 import Ticket from "@@/InfoPage/Ticket";
 import Header from "@@/InfoPage/Header";
@@ -13,7 +14,8 @@ import TotalDriveTime from "@@/infoPage/charts/TotalDriveTime";
 
 export default function InfoPage() {
   const [nickname, setNickname] = useState("Guest");
-  const [carNumber, setCarNumber] = useState("");
+  const [carNumber, setCarNumber] = useState("00가 0000");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserInfo().then((userInfo) => setNickname(userInfo.nickname || "Guest"));
@@ -23,14 +25,12 @@ export default function InfoPage() {
     searchCar("12가 1234").then((result) => {
       if (result.exists) {
         setCarNumber(result.data.carNumber);
-      } else {
-        setCarNumber("차량 정보 없음");
       }
     });
   }, []);
 
   return (
-    <div className={styles.infoPageContainer}>
+    <div>
       <div className={styles.mainContent}>
         <Header nickname={nickname} />
 
@@ -42,32 +42,12 @@ export default function InfoPage() {
               <Map />
             </div>
           </div>
-
-          <div className={styles.distanceSection}>
-            <Ticket />
-            <AllVehicles />
-          </div>
-
-          <div className={styles.dashboard}>
-            <div className={clsx(styles.item, styles.colSpan2)}></div>
-            <div
-              className={clsx(styles.item, styles.colSpan2)}
-              style={{ borderRadius: "100px", zIndex: -1 }}
-            >
-              <Ticket />
-            </div>
-            <div className={clsx(styles.item, styles.rowSpan2)}></div>
-            <div className={styles.item}>
-              <TotalDistance />
-            </div>
-            <div className={styles.item}>
-              <DailyDistance />
-            </div>
-            <div className={styles.item}>
-              <TotalDriveTime />
-            </div>
-          </div>
         </div>
+
+        <Ticket />
+        <TotalDistance />
+        <DailyDistance />
+        <TotalDriveTime />
       </div>
     </div>
   );

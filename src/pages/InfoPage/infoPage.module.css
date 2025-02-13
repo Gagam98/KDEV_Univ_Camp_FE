@@ -1,12 +1,9 @@
-.infoPageContainer {
+/* .infoPageContainer {
   display: flex;
   justify-content: center;
-  width: 100vw;
-}
+} */
 
 .mainContent {
-  width: 1000px;
-  display: flex;
   flex-direction: column;
   padding-top: 80px;
   box-sizing: border-box;
@@ -14,18 +11,21 @@
 
 .infoContent {
   flex: 1;
-  display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 100px;
   padding: 20px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .vehicleNumber {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: #000;
   align-self: flex-start;
+  padding: 20px;
+  margin-bottom: 0px;
 }
 
 .mapSection {
@@ -36,39 +36,33 @@
 
 .mapWrapper {
   width: 100%;
-  max-width: 1000px;
-  height: 400px;
+  height: 600px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #000;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /*임시*/
+  position: relative;
 }
 
 .ticketSection {
-  width: 100%;
-  display: flex;
   justify-content: center;
 }
 
 .allVehiclesSection {
-  width: 100%;
-  display: flex;
   justify-content: center;
 }
 
-.infoContent .dashboard {
+/* .infoContent .dashboard {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 350px;
   gap: 14px;
-  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   padding: 30px;
-}
+} */
 
 .item {
-  /* border: 1px solid #ccc; */
   border-radius: 20px;
   background-color: #4ca7f8;
 }

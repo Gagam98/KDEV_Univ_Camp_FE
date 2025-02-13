@@ -21,7 +21,7 @@ export default function TotalDistance() {
         type: "category",
         data: ["M", "T", "W", "T", "F", "S", "S"],
         axisLabel: {
-          color: "#fff",
+          color: "#000",
         },
         axisLine: false,
         axisTick: false,
@@ -40,13 +40,13 @@ export default function TotalDistance() {
           barWidth: "40%",
           itemStyle: {
             borderRadius: [100, 100, 0, 0],
-            color: "#fff",
+            color: "#000",
           },
           label: {
             show: true,
             position: "top",
             formatter: "{c}",
-            color: "#fff",
+            color: "#000",
             fontSize: 12,
             distance: 4,
           },

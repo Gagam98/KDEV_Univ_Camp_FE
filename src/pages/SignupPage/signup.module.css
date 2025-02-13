@@ -69,3 +69,11 @@
 .signupSubmitButton:hover {
   background-color: #218838;
 }
+
+.loginText strong {
+  cursor: pointer;
+}
+
+.loginText strong:hover {
+  text-decoration: underline;
+}

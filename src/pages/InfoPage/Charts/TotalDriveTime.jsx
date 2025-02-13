@@ -30,7 +30,7 @@ export default function TotalDriveTime() {
             show: true,
             position: "center",
             formatter: "7.0h",
-            color: "#fff",
+            color: "#000",
             fontSize: 30,
             fontWeight: "bold",
           },
@@ -38,7 +38,7 @@ export default function TotalDriveTime() {
             {
               value: 7,
               name: "일일 운행시간",
-              itemStyle: { color: "#fff" },
+              itemStyle: { color: "#000" },
             },
             {
               value: 24 - 7,
