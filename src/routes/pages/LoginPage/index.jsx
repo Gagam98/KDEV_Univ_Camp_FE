@@ -1,33 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "@/api/loginApi";
+// import { login } from "@/api/loginApi";
+import { useUserStore } from "@/stores/user";
 import styles from "./login.module.css";
 
-const LoginPage = ({ setNickname }) => {
+const LoginPage = () => {
+  const logIn = useUserStore(state => state.logIn);
+
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const idRef = useRef();
-  const passwordRef = useRef();
+  
   const navigate = useNavigate();
-
-  // 토큰 저장 함수
-  const saveTokenToStorage = (token) => {
-    localStorage.setItem("userToken", token);
-  };
-
-  // 사용자 정보 추출 함수
-  const getUserInfoFromToken = (token) => {
-    if (!token) return null;
-    return {
-      nickname: localStorage.getItem("userNickname"),
-    };
-  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    
     setLoading(true);
-    const id = idRef.current.value;
-    const password = passwordRef.current.value;
+    const formData = new FormData(e.target);
+    const id = formData.get("id");
+    const password = formData.get("password");
 
     if (!id || !password) {
       alert("아이디와 비밀번호를 입력해주세요.");
@@ -36,23 +27,11 @@ const LoginPage = ({ setNickname }) => {
     }
 
     try {
-      const response = await login(id, password);
-      const { token } = response;
-      saveTokenToStorage(token);
-      const userInfo = getUserInfoFromToken(token);
-
-      if (userInfo) {
-        setNickname(userInfo.nickname);
-        alert(`${userInfo.nickname}님, 로그인 성공!`);
-        navigate("/search");
-      } else {
-        throw new Error("사용자 정보를 가져올 수 없습니다.");
-      }
+      const user = await logIn(id, password)
+      alert(`${user.nickname}님, 로그인 성공!`);
+      navigate("/search");
     } catch (error) {
-      console.error("로그인 에러:", error);
-      setErrorMessage(
-        error.message || "로그인에 실패했습니다. 다시 시도해주세요."
-      );
+      setErrorMessage(error.message);
     } finally {
       setLoading(false);
     }
@@ -65,8 +44,7 @@ const LoginPage = ({ setNickname }) => {
         <div>
           <label htmlFor="id">아이디</label>
           <input
-            ref={idRef}
-            type="text"
+            name="id"
             id="id"
             placeholder="아이디를 입력하세요"
             className={styles.inputField}
@@ -75,7 +53,7 @@ const LoginPage = ({ setNickname }) => {
         <div>
           <label htmlFor="password">비밀번호</label>
           <input
-            ref={passwordRef}
+            name="password"
             type="password"
             id="password"
             placeholder="비밀번호를 입력하세요"

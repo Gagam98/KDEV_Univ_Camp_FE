@@ -6,7 +6,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: "@", replacement: "/src" },
-      { find: "@@", replacement: "/src/pages" },
+      { find: "@@", replacement: "/src/routes/pages" },
     ],
   },
 });

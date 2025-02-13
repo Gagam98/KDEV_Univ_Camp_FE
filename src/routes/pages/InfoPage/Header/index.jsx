@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getUserInfo } from "@/api/signupApi";
 import styles from "./Header.module.css";
 import logoImage from "@/assets/logo.png";
@@ -47,9 +47,9 @@ export default function InfoPage() {
     <div className={styles.infoPage} style={{ marginTop: 0, paddingTop: 0 }}>
       <div className={styles.header}>
         <div className={styles.leftSection}>
-          <div className={styles.logoContainer} onClick={() => navigate("/")}>
+          <Link className={styles.logoContainer} to="/search">
             <img src={logoImage} alt="Logo" className={styles.logoImage} />
-          </div>
+          </Link>
 
           <div className={styles.searchContainer}>
             <input

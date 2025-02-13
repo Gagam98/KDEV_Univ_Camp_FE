@@ -4,7 +4,7 @@ import Map from "@@/InfoPage/Map";
 import Ticket from "@@/InfoPage/Ticket";
 import Header from "@@/InfoPage/Header";
 import { getUserInfo } from "@/api/signupApi";
-import { searchCar } from "@/api/carApi";
+import { searchCarInfo } from "@/api/carApi";
 import styles from "./InfoPage.module.css";
 import AllVehicles from "@@/InfoPage/AllVehicles";
 import clsx from "clsx";
@@ -22,7 +22,7 @@ export default function InfoPage() {
   }, []);
 
   useEffect(() => {
-    searchCar("12가 1234").then((result) => {
+    searchCarInfo("12가1234").then((result) => {
       if (result.exists) {
         setCarNumber(result.data.carNumber);
       }
