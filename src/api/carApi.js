@@ -5,15 +5,13 @@ import { BASE_URL } from "./config";
  * @param {string} carNumber - 조회할 차량 번호
  * @returns {Promise<object>} 차량 정보
  */
-export const searchCar = async (carNumber) => {
+export const searchCarInfo = async (carNumber) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/api/cars/search?number=${carNumber}`,
-      {
-        method: "GET",
+    const token = localStorage.getItem("userToken");
+    const response = await fetch(`${BASE_URL}/api/vehicle-status/${carNumber}`, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
