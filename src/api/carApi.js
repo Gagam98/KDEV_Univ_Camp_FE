@@ -1,4 +1,3 @@
-// @/src/api/carApi.js
 import { BASE_URL } from "./config";
 
 /**
@@ -21,13 +20,13 @@ export const searchCar = async (carNumber) => {
 
     if (!response.ok) {
       if (response.status === 404) {
-        return { exists: false }; // 차량이 없는 경우
+        return { exists: false };
       }
       throw new Error("차량 조회에 실패했습니다: " + response.statusText);
     }
 
     const data = await response.json();
-    return { exists: true, data }; // 차량이 있는 경우
+    return { exists: true, data };
   } catch (error) {
     console.error("차량 조회 에러:", error);
     throw error;
