@@ -6,6 +6,7 @@
   align-items: center;
   gap: 40px;
   position: relative;
+  margin-top: 200px;
 }
 .ticket .point {
   color: #000;
