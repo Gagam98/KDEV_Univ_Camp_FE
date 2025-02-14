@@ -22,7 +22,7 @@ export default function InfoPage() {
       <div className={styles.mainContent}>
         <Header search color="#000" />
         <Agenda />
-        <div className={styles.infoContent}>
+        <div className={styles.vehicleNumber}>
           <h2 className={styles.vehicleNumber}>{carNumber}</h2>
 
           <div id="mapSection" className={styles.mapSection}>
