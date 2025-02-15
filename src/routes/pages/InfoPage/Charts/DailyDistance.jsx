@@ -1,6 +1,6 @@
 import * as echarts from "echarts";
 import { useEffect, useRef } from "react";
-import "./common.module.css";
+import styles from "./common.module.css";
 
 export default function DailyDistance() {
   const chartRef = useRef(null);
@@ -8,6 +8,9 @@ export default function DailyDistance() {
 
   useEffect(() => {
     if (chartRef.current) {
+      if (chartInstance.current) {
+        chartInstance.current.dispose();
+      }
       chartInstance.current = echarts.init(chartRef.current);
       chartInstance.current.setOption({
         grid: {
@@ -87,26 +90,27 @@ export default function DailyDistance() {
     return () => {
       if (chartInstance.current) {
         chartInstance.current.dispose();
+        chartInstance.current = null;
       }
     };
   }, []);
 
   return (
-    <div className="chartContainer">
+    <div className={styles.chartContainer}>
       <h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
           viewBox="0 -960 960 960"
           width="24px"
-          fill="#e8eaed"
+          fill="#000"
         >
           <path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z" />
         </svg>
         일일 주행거리
       </h3>
       <h4>총 100.0km</h4>
-      <div className="chart" ref={chartRef}></div>
+      <div className={styles.chart} ref={chartRef}></div>
     </div>
   );
 }

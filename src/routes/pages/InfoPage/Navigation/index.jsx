@@ -1,9 +1,9 @@
-import agendaStyles from "./Agenda.module.css";
+import agendaStyles from "./index.module.css";
 import infoStyles from "../InfoPage.module.css";
 
-export default function Agenda() {
+export default function Navigation() {
   const menuItems = [
-    { id: "mapSection", label: "지도" },
+    { id: "numberSection", label: "지도" },
     { id: "ticketSection", label: "장소 및 시간" },
     { id: "driveStats", label: "주행거리 및 운행시간" },
   ];

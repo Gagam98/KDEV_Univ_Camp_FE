@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
 import Header from "@/components/Header";
-import Agenda from "./Agenda";
+import Navigation from "./Navigation";
 import Map from "./Map";
 import Ticket from "./Ticket";
 import styles from "./InfoPage.module.css";
@@ -20,12 +20,14 @@ export default function InfoPage() {
   return (
     <div>
       <div className={styles.mainContent}>
-        <Header search color="#000" />
-        <Agenda />
+        <Header color="rgba(0, 0, 0, 0.5)" />
+        <Navigation />
         <div className={styles.vehicleNumber}>
-          <h2 className={styles.vehicleNumber}>{carNumber}</h2>
+          <h2 id="numberSection" className={styles.vehicleNumber}>
+            {carNumber}
+          </h2>
 
-          <div id="mapSection" className={styles.mapSection}>
+          <div className={styles.mapSection}>
             <div className={styles.mapWrapper}>
               <Map />
             </div>
@@ -36,7 +38,7 @@ export default function InfoPage() {
           <Ticket />
         </div>
 
-        <div id="driveStats">
+        <div id="driveStats" className={styles.driveStatus}>
           <TotalDistance />
           <DailyDistance />
           <TotalDriveTime />

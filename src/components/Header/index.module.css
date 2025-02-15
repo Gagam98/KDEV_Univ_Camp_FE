@@ -25,6 +25,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: 0.3s;
+}
+.logoContainer:hover {
+  filter: invert();
 }
 
 .logoImage {
@@ -84,7 +88,7 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -53,25 +53,8 @@
   justify-content: center;
 }
 
-/* .infoContent .dashboard {
+.driveStatus {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 350px;
-  gap: 14px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-} */
-
-.item {
-  border-radius: 20px;
-  background-color: #4ca7f8;
-}
-
-.rowSpan2 {
-  grid-row: span 2;
-}
-
-.colSpan2 {
-  grid-column: span 2;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 350px;
 }
