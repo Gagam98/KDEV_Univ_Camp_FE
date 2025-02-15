@@ -1,5 +1,5 @@
 import agendaStyles from "./index.module.css";
-import infoStyles from "../InfoPage.module.css";
+import infoStyles from "../common.module.css";
 
 export default function Navigation() {
   const menuItems = [
