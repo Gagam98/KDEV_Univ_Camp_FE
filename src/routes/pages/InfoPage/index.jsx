@@ -6,9 +6,9 @@ import Navigation from "./Navigation";
 import Map from "./Map";
 import Ticket from "./Ticket";
 import styles from "./common.module.css";
-import TotalDistance from "./charts/TotalDistance.jsx";
-import DailyDistance from "./charts/DailyDistance.jsx";
-import TotalDriveTime from "./charts/TotalDriveTime.jsx";
+import TotalDistance from "./charts/TotalDistance";
+import DailyDistance from "./charts/DailyDistance";
+import TotalDriveTime from "./charts/TotalDriveTime";
 
 export default function InfoPage() {
   const { carNumber } = useParams();
