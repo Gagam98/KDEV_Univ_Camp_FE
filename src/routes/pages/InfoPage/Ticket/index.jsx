@@ -1,5 +1,6 @@
 import styles from "./Ticket.module.css";
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 
 export default function Ticket({ carInfo }) {
   const duration = 4;
@@ -11,12 +12,19 @@ export default function Ticket({ carInfo }) {
     }, 200);
   }, [carPos]);
 
+  // 'YYYY-MM-DD hh:mm:ss'
+  // 'YYYY년 MM월 DD일 hh시 mm분 ss초'
+
   return (
     <div className={styles.ticket}>
       <div className={styles.point}>
         <div className={styles.name}>{carInfo.rentalLocation}</div>
-        <div className={styles.time}>9:00 AM</div>
-        <div className={styles.date}>2005-01-01</div>
+        <div className={styles.time}>
+          {dayjs(carInfo.rentalDateTime).format("hh:mm A")}
+        </div>
+        <div className={styles.date}>
+          {dayjs(carInfo.rentalDateTime).format("YYYY-MM-DD")}
+        </div>
       </div>
 
       <div className={styles.line}>
@@ -32,9 +40,6 @@ export default function Ticket({ carInfo }) {
             viewBox="0 0 1280.000000 806.000000"
             preserveAspectRatio="xMidYMid meet"
           >
-            <metadata>
-              Created by potrace 1.15, written by Peter Selinger 2001-2017
-            </metadata>
             <g
               transform="translate(0.000000,806.000000) scale(0.100000,-0.100000)"
               fill="#000"
@@ -49,9 +54,13 @@ export default function Ticket({ carInfo }) {
       </div>
 
       <div className={styles.point}>
-        <div className={styles.name}>부산</div>
-        <div className={styles.time}>11:00 PM</div>
-        <div className={styles.date}>2005-03-24</div>
+        <div className={styles.name}>{carInfo.returnLocation}</div>
+        <div className={styles.time}>
+          {dayjs(carInfo.returnDateTime).format("hh:mm A")}
+        </div>
+        <div className={styles.date}>
+          {dayjs(carInfo.returnDateTime).format("YYYY-MM-DD")}
+        </div>
       </div>
     </div>
   );

@@ -33,7 +33,7 @@
 
 .chartContainer .pieChart {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 120px 1fr;
 }
 .chartContainer .pieChartLabel {
   margin-top: 14px;

@@ -1,16 +1,37 @@
 import * as echarts from "echarts";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./common.module.css";
 import clsx from "clsx";
+import dayjs from "dayjs";
 
-export default function TotalDriveTime() {
+function getHour(hour) {
+  const th = hour / 1000 / 60 / 60;
+  const d = Number.parseInt(th / 24);
+  const h = Number.parseInt(th % 24);
+  return {
+    day: d,
+    hour: h,
+    format: `${d > 0 ? `${d}d ` : ""}${h}h`,
+  };
+}
+
+export default function TotalDriveTime({ carInfo }) {
+  const dailyDrivingHours = carInfo.dailyDrivingTime;
+  const totalDrivingHours = carInfo.totalDrivingTime;
   let chart = null;
+
+  const [daily] = useState(getHour(dailyDrivingHours));
+  const [total] = useState(getHour(totalDrivingHours));
   const chartRef = useRef(null);
 
   useEffect(() => {
     if (chartRef.current) {
       chart = echarts.init(chartRef.current);
+      setChartOptions();
     }
+  }, []);
+
+  function setChartOptions() {
     chart?.setOption({
       grid: {
         left: 0,
@@ -29,19 +50,19 @@ export default function TotalDriveTime() {
           label: {
             show: true,
             position: "center",
-            formatter: "7.0h",
+            formatter: daily.format,
             color: "#000",
             fontSize: 30,
             fontWeight: "bold",
           },
           data: [
             {
-              value: 7,
+              value: daily.hour,
               name: "일일 운행시간",
               itemStyle: { color: "#000" },
             },
             {
-              value: 24 - 7,
+              value: 24 - daily.hour,
               name: "전체 운행시간",
               itemStyle: { color: "rgba(255,255,255,0.2)" },
               label: { show: false },
@@ -50,7 +71,7 @@ export default function TotalDriveTime() {
         },
       ],
     });
-  }, []);
+  }
 
   return (
     <div className={styles.chartContainer}>
@@ -70,11 +91,11 @@ export default function TotalDriveTime() {
         <div className={styles.pieChartLabel}>
           <div>
             <label>전체 운행시간</label>
-            <h4>24.0h</h4>
+            <h4>{total.format}</h4>
           </div>
           <div>
             <label>일일 운행시간</label>
-            <h4>7.0h</h4>
+            <h4>{daily.format}</h4>
           </div>
         </div>
         <div ref={chartRef}></div>
