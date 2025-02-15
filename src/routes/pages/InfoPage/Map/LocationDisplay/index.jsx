@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useKakaoMapLoader } from "@/hooks/useKakaoMapLoader";
-import styles from "./LocationDisplay.module.css";
+import styles from "./locationDisplay.module.css";
 
 const LocationDisplay = () => {
   const [location, setLocation] = useState("Loading...");
