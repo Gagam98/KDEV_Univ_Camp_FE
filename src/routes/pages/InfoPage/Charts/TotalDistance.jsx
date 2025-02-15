@@ -51,6 +51,15 @@ export default function TotalDistance() {
             distance: 4,
           },
         },
+        {
+          data: [85, 165, 198, 120, 45, 151, 80],
+          type: "bar",
+          barWidth: "20%",
+          itemStyle: {
+            borderRadius: [100, 100, 0, 0],
+            color: "rgba(0,0,0,0.3)",
+          },
+        },
       ],
     });
   }, []);
