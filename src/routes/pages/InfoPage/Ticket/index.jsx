@@ -1,7 +1,7 @@
 import styles from "./Ticket.module.css";
 import { useState, useEffect } from "react";
 
-export default function Ticket() {
+export default function Ticket({ carInfo }) {
   const duration = 4;
   const [carPos, setCarPos] = useState(0);
 
@@ -14,7 +14,7 @@ export default function Ticket() {
   return (
     <div className={styles.ticket}>
       <div className={styles.point}>
-        <div className={styles.name}>서울</div>
+        <div className={styles.name}>{carInfo.rentalLocation}</div>
         <div className={styles.time}>9:00 AM</div>
         <div className={styles.date}>2005-01-01</div>
       </div>

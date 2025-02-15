@@ -35,22 +35,12 @@ export default function SearchPage() {
     try {
       const result = await searchCarInfo(carNumber);
 
-      if (!result.exists) {
-        // 차량이 존재하지 않는 경우 ErrorPage로 이동
-        navigate("/error", {
-          state: {
-            message: "차량을 찾을 수 없습니다.",
-            carNumber,
-          },
-        });
-      } else {
-        // 차량이 존재하는 경우 InfoPage로 이동
-        navigate(`/info/${carNumber}`, {
-          state: {
-            carInfo: result.data,
-          },
-        });
-      }
+      // 차량이 존재하는 경우 InfoPage로 이동
+      navigate(`/info/${carNumber}`, {
+        state: {
+          carInfo: result.data,
+        },
+      });
     } catch (error) {
       console.error("검색 에러:", error);
       setError(error.message || "차량 조회에 실패했습니다.");

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
 import Header from "@/components/Header";
@@ -12,37 +12,47 @@ import TotalDriveTime from "./charts/TotalDriveTime";
 
 export default function InfoPage() {
   const { carNumber } = useParams();
+  const [carInfo, setCarInfo] = useState(null);
 
   useEffect(() => {
-    searchCarInfo(carNumber);
+    init();
   }, []);
+
+  async function init() {
+    const { data } = await searchCarInfo(carNumber);
+    setCarInfo(data);
+  }
 
   return (
     <div>
       <div className={styles.mainContent}>
         <Header color="rgba(0, 0, 0, 0.5)" />
         <Navigation />
-        <div className={styles.vehicleNumber}>
-          <h2 id="numberSection" className={styles.vehicleNumber}>
-            {carNumber}
-          </h2>
+        {carInfo && (
+          <>
+            <div className={styles.vehicleNumber}>
+              <h2 id="numberSection" className={styles.vehicleNumber}>
+                {carNumber}
+              </h2>
 
-          <div className={styles.mapSection}>
-            <div className={styles.mapWrapper}>
-              <Map />
+              <div className={styles.mapSection}>
+                <div className={styles.mapWrapper}>
+                  <Map carInfo={carInfo} />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div id="ticketSection">
-          <Ticket />
-        </div>
+            <div id="ticketSection">
+              <Ticket carInfo={carInfo} />
+            </div>
 
-        <div id="driveStats" className={styles.driveStatus}>
-          <TotalDistance />
-          <DailyDistance />
-          <TotalDriveTime />
-        </div>
+            <div id="driveStats" className={styles.driveStatus}>
+              <TotalDistance carInfo={carInfo} />
+              <DailyDistance carInfo={carInfo} />
+              <TotalDriveTime carInfo={carInfo} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

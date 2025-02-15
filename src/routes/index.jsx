@@ -8,7 +8,6 @@ import SearchPage from "./pages/SearchPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import InfoPage from "./pages/InfoPage";
-import ErrorPage from "./pages/ErrorPage";
 import MapPage from "./pages/MapPage";
 
 const router = createBrowserRouter([
@@ -38,10 +37,6 @@ const router = createBrowserRouter([
     path: "/search",
     loader: requiresAuth,
     element: <SearchPage />,
-  },
-  {
-    path: "/error",
-    element: <ErrorPage />,
   },
 ]);
 

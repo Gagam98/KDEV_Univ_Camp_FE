@@ -4,7 +4,7 @@ import styles from "./DrivingStatus.module.css";
 const DrivingStatus = ({ status }) => {
   const getStatusClass = () => {
     switch (status) {
-      case "운행중":
+      case "운행 중":
         return styles.statusRunning;
       case "미운행":
         return styles.statusStopped;

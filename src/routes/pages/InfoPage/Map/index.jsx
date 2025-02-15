@@ -7,7 +7,7 @@ import Zoom from "@@/InfoPage/Map/Zoom";
 import { MapProvider } from "@@/InfoPage/Map/MapProvider";
 import styles from "@@/InfoPage/Map/Map.module.css";
 
-const Map = () => {
+const Map = ({ carInfo }) => {
   const { map, setSelectedDate } = MapProvider();
 
   return (
@@ -20,7 +20,7 @@ const Map = () => {
         </div>
 
         <div className={styles.statusLeftBottom}>
-          <DrivingStatus status="운행중" />
+          <DrivingStatus status={carInfo.status} />
           <Battery level={50} isCharging={true} />
         </div>
         <Zoom mapInstance={map} />
