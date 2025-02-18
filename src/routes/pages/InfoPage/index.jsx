@@ -42,9 +42,14 @@ export default function InfoPage() {
               </div>
             </div>
 
-            <div className={styles.ticketContainer}>대여 및 반납장소</div>
+            <div id="ticketSection" className={styles.ticketContainer}>
+              <h2>대여 및 반납장소</h2>
+            </div>
             <Ticket carInfo={carInfo} />
 
+            <div id="driveStats" className={styles.ticketContainer}>
+              <h2>주행거리 및 운행시간</h2>
+            </div>
             <div id="driveStats" className={styles.driveStatus}>
               <TotalDistance carInfo={carInfo} />
               <DailyDistance carInfo={carInfo} />

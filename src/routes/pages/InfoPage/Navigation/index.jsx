@@ -23,12 +23,6 @@ export default function Navigation() {
             </li>
           ))}
         </ul>
-        <div
-          className={agendaStyles.fullMap}
-          onClick={() => (window.location.href = "/map")}
-        >
-          전체 지도
-        </div>
       </nav>
     </div>
   );
