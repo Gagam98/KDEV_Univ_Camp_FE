@@ -36,14 +36,18 @@ export default function SearchPage() {
       const result = await searchCarInfo(carNumber);
 
       // 차량이 존재하는 경우 InfoPage로 이동
-      navigate(`/info/${carNumber}`, {
-        state: {
-          carInfo: result.data,
-        },
-      });
+      if (result.exists) {
+        navigate(`/info/${carNumber}`, {
+          state: {
+            carInfo: result.data,
+          },
+        });
+      } else {
+        setError(`차량을 찾을 수 없습니다: ${carNumber}`);
+      }
     } catch (error) {
       console.error("검색 에러:", error);
-      setError(error.message || "차량 조회에 실패했습니다.");
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -69,7 +73,7 @@ export default function SearchPage() {
                 {loading ? "검색 중..." : "검색"}
               </button>
             </div>
-            {error && <p className={styles.errorText}>{error}</p>}
+            {error && <div style={{ color: "white" }}>{error}</div>}
           </form>
         </div>
       </div>

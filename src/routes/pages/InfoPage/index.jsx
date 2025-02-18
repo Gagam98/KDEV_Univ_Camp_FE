@@ -42,9 +42,8 @@ export default function InfoPage() {
               </div>
             </div>
 
-            <div id="ticketSection">
-              <Ticket carInfo={carInfo} />
-            </div>
+            <div className={styles.ticketContainer}>대여 및 반납장소</div>
+            <Ticket carInfo={carInfo} />
 
             <div id="driveStats" className={styles.driveStatus}>
               <TotalDistance carInfo={carInfo} />

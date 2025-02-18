@@ -22,7 +22,10 @@ export const searchCarInfo = async (carNumber) => {
       if (response.status === 404) {
         return { exists: false };
       }
-      throw new Error("차량 조회에 실패했습니다: " + response.statusText);
+      const errorMessage = response.statusText
+        ? ` (${response.statusText})`
+        : "";
+      throw new Error(`차량을 찾을 수 없습니다: ${carNumber}${errorMessage}`);
     }
 
     const data = await response.json();

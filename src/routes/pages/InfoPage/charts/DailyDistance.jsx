@@ -77,7 +77,7 @@ export default function DailyDistance() {
                   },
                   lineStyle: {
                     width: 2,
-                    color: "rgba(255,255,255,0.3)",
+                    color: "rgba(0,0,0,0.3)",
                   },
                 },
               ],

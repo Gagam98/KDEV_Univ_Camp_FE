@@ -50,6 +50,23 @@ export default function TotalDistance() {
             fontSize: 12,
             distance: 4,
           },
+          markLine: {
+            silent: true,
+            symbol: "none",
+            data: [
+              {
+                type: "average",
+                name: "",
+                label: {
+                  show: false,
+                },
+                lineStyle: {
+                  width: 2,
+                  color: "rgba(0,0,0,0.3)",
+                },
+              },
+            ],
+          },
         },
         {
           data: [85, 165, 198, 120, 45, 151, 80],
