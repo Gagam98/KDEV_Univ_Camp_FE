@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import { useUserStore } from "@/stores/user";
 import styles from "./index.module.css";
@@ -8,6 +8,7 @@ import clsx from "clsx";
 export default function Header({ search, color = "transparent" }) {
   const [isShowPopup, setIsShowPopup] = useState(false);
   const nickname = useUserStore((state) => state.user?.nickname) || "";
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener("click", offPopup);
@@ -24,6 +25,12 @@ export default function Header({ search, color = "transparent" }) {
   }
   function offPopup() {
     setIsShowPopup(false);
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("userToken");
+
+    navigate("/login");
   }
 
   return (
@@ -57,7 +64,9 @@ export default function Header({ search, color = "transparent" }) {
               >
                 <ul>
                   <li>사용자 정보</li>
-                  <li>로그아웃</li>
+                  <li onClick={handleLogout} className={styles.logoutButton}>
+                    로그아웃
+                  </li>
                 </ul>
               </div>
             </div>
