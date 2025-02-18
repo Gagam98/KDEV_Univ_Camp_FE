@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
-import { fetchWeeklyDistance } from "@/api/distanceApi";
+import { fetchWeeklyDistance } from "@/api/totalDistanceApi";
 import Header from "@/components/Header";
 import Navigation from "./Navigation";
 import Map from "./Map";

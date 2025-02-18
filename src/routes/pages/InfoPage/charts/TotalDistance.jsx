@@ -12,7 +12,11 @@ export default function TotalDistance({ weeklyDistance }) {
     if (!weeklyDistance) return;
 
     setTotalDistance(weeklyDistance.totalDistance || 0);
-    setThisWeekDistances(weeklyDistance.thisWeekDistances || []);
+
+    // 0을 `null`로 변환하여 차트에서 보이지 않도록 설정
+    setThisWeekDistances(
+      weeklyDistance.thisWeekDistances?.map((d) => (d === 0 ? null : d)) || []
+    );
     setLastWeekDistances(weeklyDistance.lastWeekDistances || []);
   }, [weeklyDistance]);
 

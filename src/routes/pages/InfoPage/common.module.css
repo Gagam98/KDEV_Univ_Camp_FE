@@ -1,8 +1,3 @@
-/* .infoPageContainer {
-  display: flex;
-  justify-content: center;
-} */
-
 .mainContent {
   flex-direction: column;
   padding-top: 80px;
@@ -26,7 +21,6 @@
   align-self: flex-start;
   padding: 30px;
   margin-bottom: 0px;
-  margin-top: 30px;
 }
 
 .mapSection {
