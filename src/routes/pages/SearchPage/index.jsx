@@ -35,7 +35,6 @@ export default function SearchPage() {
     try {
       const result = await searchCarInfo(carNumber);
 
-      // 차량이 존재하는 경우 InfoPage로 이동
       if (result.exists) {
         navigate(`/info/${carNumber}`, {
           state: {
@@ -62,6 +61,11 @@ export default function SearchPage() {
           style={{ transform: "translateY(-80px)" }}
         >
           <div className={styles.searchTitleText}>차량번호를 입력하세요.</div>
+
+          <div className={styles.mapLink} onClick={() => navigate("/map")}>
+            전체지도 보기
+          </div>
+
           <form onSubmit={handleSearch}>
             <div id="main-search" className="mini" ref={searchRef}>
               <input

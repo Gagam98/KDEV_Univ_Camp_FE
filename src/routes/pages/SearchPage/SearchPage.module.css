@@ -31,10 +31,10 @@ body {
 
 .searchTitleText {
   font-family: var(--font-main);
-  font-size: 44px;
-  font-weight: 200;
+  font-size: 60px;
+  font-weight: 400;
   color: #ffffff;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-align: center;
   z-index: 2;
 }
@@ -54,4 +54,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.mapLink {
+  margin-top: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: text-decoration 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.mapLink:hover {
+  text-decoration: underline;
 }

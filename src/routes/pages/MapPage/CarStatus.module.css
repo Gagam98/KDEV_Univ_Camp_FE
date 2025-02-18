@@ -19,13 +19,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.statusIndicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .progressBar {
