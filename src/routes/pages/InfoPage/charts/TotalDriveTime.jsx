@@ -2,8 +2,13 @@ import * as echarts from "echarts";
 import { useState, useEffect, useRef } from "react";
 import styles from "./common.module.css";
 import clsx from "clsx";
-import dayjs from "dayjs";
+import { searchCarInfo } from "@/api/carApi";
 
+/**
+ * millisecond 단위를 시간으로 변환하는 함수
+ * @param {number} hour - 밀리초 단위의 시간 값
+ * @returns {object} 변환된 시간 값 (일, 시간, 포맷 문자열)
+ */
 function getHour(hour) {
   const th = hour / 1000 / 60 / 60;
   const d = Number.parseInt(th / 24);
@@ -15,24 +20,38 @@ function getHour(hour) {
   };
 }
 
-export default function TotalDriveTime({ carInfo }) {
-  const dailyDrivingHours = carInfo.dailyDrivingTime;
-  const totalDrivingHours = carInfo.totalDrivingTime;
-  let chart = null;
-
-  const [daily] = useState(getHour(dailyDrivingHours));
-  const [total] = useState(getHour(totalDrivingHours));
+export default function TotalDriveTime({ carNumber }) {
   const chartRef = useRef(null);
+  const [dailyDrivingTime, setDailyDrivingTime] = useState(0);
+  const [totalDrivingTime, setTotalDrivingTime] = useState(0);
 
   useEffect(() => {
-    if (chartRef.current) {
-      chart = echarts.init(chartRef.current);
-      setChartOptions();
-    }
-  }, []);
+    if (!carNumber) return;
 
-  function setChartOptions() {
-    chart?.setOption({
+    async function fetchCarInfo() {
+      try {
+        const response = await searchCarInfo(carNumber);
+        if (response.exists) {
+          const data = response.data;
+          setDailyDrivingTime(data?.dailyDrivingTime ?? 0);
+          setTotalDrivingTime(data?.totalDrivingTime ?? 0);
+        }
+      } catch (error) {
+        console.error("운행시간 조회 실패:", error);
+      }
+    }
+
+    fetchCarInfo();
+  }, [carNumber]);
+
+  const daily = getHour(dailyDrivingTime);
+  const total = getHour(totalDrivingTime);
+
+  useEffect(() => {
+    if (!chartRef.current) return;
+
+    const chart = echarts.init(chartRef.current);
+    chart.setOption({
       grid: {
         left: 0,
         right: 0,
@@ -71,7 +90,11 @@ export default function TotalDriveTime({ carInfo }) {
         },
       ],
     });
-  }
+
+    return () => {
+      chart.dispose();
+    };
+  }, [daily]);
 
   return (
     <div className={styles.chartContainer}>

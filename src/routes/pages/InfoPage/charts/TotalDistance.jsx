@@ -1,16 +1,27 @@
 import * as echarts from "echarts";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./common.module.css";
 
-export default function TotalDistance() {
-  let chart = null;
+export default function TotalDistance({ weeklyDistance }) {
   const chartRef = useRef(null);
+  const [totalDistance, setTotalDistance] = useState(0);
+  const [thisWeekDistances, setThisWeekDistances] = useState([]);
+  const [lastWeekDistances, setLastWeekDistances] = useState([]);
 
   useEffect(() => {
-    if (chartRef.current) {
-      chart = echarts.init(chartRef.current);
-    }
-    chart?.setOption({
+    if (!weeklyDistance) return;
+
+    setTotalDistance(weeklyDistance.totalDistance || 0);
+    setThisWeekDistances(weeklyDistance.thisWeekDistances || []);
+    setLastWeekDistances(weeklyDistance.lastWeekDistances || []);
+  }, [weeklyDistance]);
+
+  useEffect(() => {
+    if (!thisWeekDistances.length && !lastWeekDistances.length) return;
+
+    const chart = echarts.init(chartRef.current);
+
+    chart.setOption({
       grid: {
         left: 0,
         right: 0,
@@ -35,7 +46,8 @@ export default function TotalDistance() {
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
+          name: "이번 주",
+          data: thisWeekDistances,
           type: "bar",
           barWidth: "40%",
           itemStyle: {
@@ -56,7 +68,7 @@ export default function TotalDistance() {
             data: [
               {
                 type: "average",
-                name: "",
+                name: "평균",
                 label: {
                   show: false,
                 },
@@ -69,7 +81,8 @@ export default function TotalDistance() {
           },
         },
         {
-          data: [85, 165, 198, 120, 45, 151, 80],
+          name: "지난 주",
+          data: lastWeekDistances,
           type: "bar",
           barWidth: "20%",
           itemStyle: {
@@ -79,7 +92,11 @@ export default function TotalDistance() {
         },
       ],
     });
-  }, []);
+
+    return () => {
+      chart.dispose();
+    };
+  }, [thisWeekDistances, lastWeekDistances]);
 
   return (
     <div className={styles.chartContainer}>
@@ -95,7 +112,7 @@ export default function TotalDistance() {
         </svg>
         주행거리
       </h3>
-      <h4>총 236.0km</h4>
+      <h4>총 {totalDistance}km</h4>
       <div className={styles.chart} ref={chartRef}></div>
     </div>
   );

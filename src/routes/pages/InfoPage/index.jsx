@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
+import { fetchWeeklyDistance } from "@/api/distanceApi";
 import Header from "@/components/Header";
 import Navigation from "./Navigation";
 import Map from "./Map";
@@ -13,15 +14,25 @@ import TotalDriveTime from "./charts/TotalDriveTime";
 export default function InfoPage() {
   const { carNumber } = useParams();
   const [carInfo, setCarInfo] = useState(null);
+  const [weeklyDistance, setWeeklyDistance] = useState(null);
 
   useEffect(() => {
-    init();
-  }, []);
+    async function init() {
+      try {
+        const { data } = await searchCarInfo(carNumber);
+        setCarInfo(data);
 
-  async function init() {
-    const { data } = await searchCarInfo(carNumber);
-    setCarInfo(data);
-  }
+        const distanceData = await fetchWeeklyDistance(carNumber);
+        if (distanceData.exists) {
+          setWeeklyDistance(distanceData.data);
+        }
+      } catch (error) {
+        console.error("차량 정보 조회 실패:", error);
+      }
+    }
+
+    init();
+  }, [carNumber]);
 
   return (
     <div>
@@ -51,9 +62,11 @@ export default function InfoPage() {
               <h2>주행거리 및 운행시간</h2>
             </div>
             <div id="driveStats" className={styles.driveStatus}>
-              <TotalDistance carInfo={carInfo} />
-              <DailyDistance carInfo={carInfo} />
-              <TotalDriveTime carInfo={carInfo} />
+              {weeklyDistance && (
+                <TotalDistance weeklyDistance={weeklyDistance} />
+              )}
+              <DailyDistance carNumber={carNumber} />
+              <TotalDriveTime carNumber={carNumber} />
             </div>
           </>
         )}

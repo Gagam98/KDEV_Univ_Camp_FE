@@ -1,12 +1,55 @@
 import * as echarts from "echarts";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./common.module.css";
+import { searchCarInfo } from "@/api/carApi";
 
-export default function DailyDistance() {
+/**
+ * millisecond 단위를 시간으로 변환하는 함수
+ * @param {number} hour - 밀리초 단위의 시간 값
+ * @returns {object} 변환된 시간 값 (일, 시간, 포맷 문자열)
+ */
+function getHour(hour) {
+  const th = hour / 1000 / 60 / 60;
+  const d = Number.parseInt(th / 24);
+  const h = Number.parseInt(th % 24);
+  return {
+    day: d,
+    hour: h,
+    format: `${d > 0 ? `${d}d ` : ""}${h}h`,
+  };
+}
+
+export default function DailyDistance({ carNumber }) {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const [hourlyDistances, setHourlyDistances] = useState([]);
+  const [dailyDrivingTime, setDailyDrivingTime] = useState({ format: "0h" });
 
   useEffect(() => {
+    if (!carNumber) return;
+
+    async function fetchCarInfo() {
+      try {
+        const response = await searchCarInfo(carNumber);
+        if (response.exists) {
+          const data = response.data;
+          const hourlyData = data.hourlyDistances?.[0]?.distances || [];
+          const convertedTime = getHour(data.dailyDrivingTime || 0);
+
+          setHourlyDistances(hourlyData);
+          setDailyDrivingTime(convertedTime);
+        }
+      } catch (error) {
+        console.error("일일 주행거리 조회 실패:", error);
+      }
+    }
+
+    fetchCarInfo();
+  }, [carNumber]);
+
+  useEffect(() => {
+    if (!hourlyDistances.length) return;
+
     if (chartRef.current) {
       if (chartInstance.current) {
         chartInstance.current.dispose();
@@ -50,9 +93,10 @@ export default function DailyDistance() {
         },
         series: [
           {
-            data: [85, 132, 45, 167, 98, 223, 156, 78, 189, 112, 145, 92],
+            name: "시간대별 주행거리",
+            data: hourlyDistances,
             type: "bar",
-            barWidth: "40%",
+            barWidth: "30%",
             itemStyle: {
               borderRadius: [100, 100, 0, 0],
               color: "#000",
@@ -71,7 +115,7 @@ export default function DailyDistance() {
               data: [
                 {
                   type: "average",
-                  name: "",
+                  name: "평균",
                   label: {
                     show: false,
                   },
@@ -93,7 +137,7 @@ export default function DailyDistance() {
         chartInstance.current = null;
       }
     };
-  }, []);
+  }, [hourlyDistances]);
 
   return (
     <div className={styles.chartContainer}>
@@ -109,7 +153,7 @@ export default function DailyDistance() {
         </svg>
         일일 주행거리
       </h3>
-      <h4>총 100.0km</h4>
+      <h4>총 {dailyDrivingTime.format}</h4>
       <div className={styles.chart} ref={chartRef}></div>
     </div>
   );
