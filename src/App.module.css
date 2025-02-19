@@ -1,5 +1,4 @@
-/* .appContainer {
-  height: 100%;
-  background-color: var(--bg-color);
-  color: var(--txt-color);
-} */
+.appContainer {
+  max-width: 2560px;
+  margin: 0 auto;
+}

@@ -7,7 +7,7 @@
 }
 
 .headerContainer {
-  max-width: 1920px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -49,7 +49,6 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* 검색 컨테이너 */
 .searchContainer {
   display: flex;
   align-items: center;
@@ -63,7 +62,6 @@
   outline: none;
 }
 
-/* 사용자 정보 */
 .userInfo {
   display: flex;
   align-items: center;
@@ -75,7 +73,6 @@
   font-weight: 500;
 }
 
-/* 프로필 아이콘 */
 .avatarCircle {
   width: 36px;
   height: 36px;
@@ -90,7 +87,6 @@
   justify-content: center;
 }
 
-/* 팝업 메뉴 */
 .popupContainer {
   position: relative;
   width: min-content;

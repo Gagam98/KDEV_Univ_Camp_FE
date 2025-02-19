@@ -1,10 +1,13 @@
 import { ScrollRestoration, Outlet } from "react-router-dom";
+import appStyles from "@/App.module.css";
 
-export default function () {
+export default function DefaultLayout() {
   return (
     <>
       <ScrollRestoration />
-      <Outlet />
+      <div className={appStyles.appContainer}>
+        <Outlet />
+      </div>
     </>
   );
 }
