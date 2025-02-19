@@ -11,36 +11,32 @@
   box-shadow: none;
 }
 
-.statusIcon {
-  font-size: 20px;
-}
-
 .statusRunning {
-  color: #0f7835;
-  border-color: #c8e6c9;
+  color: #3cb371;
+  border-color: #c0e6c9;
   background-color: #eaf6ea;
 }
 
 .statusRunning .statusIcon {
-  color: #0f7835;
+  color: #3cb371;
 }
 
 .statusStopped {
-  color: #3e3e3e;
+  color: #6c757d;
   border-color: #d6d6d6;
-  background-color: #f3f3f3;
+  background-color: #f8f9fa;
 }
 
 .statusStopped .statusIcon {
-  color: #3e3e3e;
+  color: #6c757d;
 }
 
 .statusUnmonitored {
-  color: #d32f2f;
+  color: #d9534f;
   border-color: #f5c6c6;
   background-color: #fdeeee;
 }
 
 .statusUnmonitored .statusIcon {
-  color: #d32f2f;
+  color: #d9534f;
 }

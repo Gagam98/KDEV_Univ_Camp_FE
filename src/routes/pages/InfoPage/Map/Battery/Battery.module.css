@@ -1,55 +1,81 @@
-.batteryOverlay {
-  width: 150px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.batteryBox {
-  position: relative;
-  width: 133px;
-  height: 67px;
-  border: 3px solid #077bff;
+.batteryContainer {
+  width: 200px;
+  padding: 16px;
   border-radius: 16px;
-  background: transparent;
+  background-color: #f8f9fa;
+  color: #333;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.batteryProgress {
-  height: 100%;
-  background: #077bff;
-  transition: width 0.5s ease;
-}
-
-.batteryCap {
-  position: absolute;
-  top: 20px;
-  right: -8px;
-  width: 6px;
-  height: 27px;
-  background: #077bff;
-  border-radius: 3px;
+.batteryStatus {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+  gap: 6px;
 }
 
 .chargingIcon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #ffd700;
 }
 
-.chargingIconSymbol {
-  font-size: 25px;
-  color: #ffffff;
-  text-shadow: 0px 0px 5px #000000;
+.warningIcon {
+  font-size: 14px;
+  color: #d9534f;
 }
 
-.batteryText {
-  position: absolute;
-  bottom: 6px;
-  right: 6px;
+.batteryInfo {
   font-size: 18px;
-  color: #ffffff;
-  text-shadow: 0px 0px 5px #000000;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.batteryLevel {
+  font-size: 20px;
+}
+
+.remainingTime {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.batteryBarContainer {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.batteryScale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.batteryBar {
+  width: 100%;
+  height: 32px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.1); /* 부드러운 회색 */
+  position: relative;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.batteryFill {
+  height: 100%;
+  border-radius: 16px;
+  background: rgba(60, 179, 113, 0.9);
+  box-shadow: 0px 0px 10px rgba(60, 179, 113, 0.8);
+  transition: width 0.5s ease-in-out;
+}
+
+.lowBattery {
+  background: rgba(217, 83, 79, 0.9);
+  box-shadow: 0px 0px 10px rgba(217, 83, 79, 0.8);
 }

@@ -21,7 +21,7 @@ const Map = ({ carInfo }) => {
 
         <div className={styles.statusLeftBottom}>
           <DrivingStatus status={carInfo.status} />
-          <Battery level={50} isCharging={true} />
+          <Battery level={80} isCharging={false} remainingTime={160} />
         </div>
         <Zoom mapInstance={map} />
       </div>
