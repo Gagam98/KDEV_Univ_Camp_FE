@@ -17,7 +17,7 @@ const DrivingStatus = ({ status }) => {
 
   return (
     <div className={`${styles.statusContainer} ${getStatusClass()}`}>
-      <span className={styles.statusCircle}></span>
+      <span className={styles.statusIcon}>⏻</span>
       <span className={styles.statusText}>{status}</span>
     </div>
   );

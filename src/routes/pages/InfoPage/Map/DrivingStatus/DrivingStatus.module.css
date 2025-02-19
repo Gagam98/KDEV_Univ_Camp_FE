@@ -1,47 +1,46 @@
 .statusContainer {
-  width: 160px; /* 기존보다 2배 */
-  height: 100px; /* 기존보다 2배 */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid white; /* 크기에 맞춰 두께 증가 */
-  border-radius: 16px; /* 비율 맞춰 조정 */
-  background-color: transparent;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  background-color: #fff;
+  font-size: 18px;
+  box-shadow: none;
 }
 
-/* .statusCircle {
-  width: 20px; 
-  height: 20px; 
-  border-radius: 50%;
-  margin-right: 16px;
+.statusIcon {
+  font-size: 20px;
 }
 
-.statusRunning .statusCircle {
-  background-color: green;
+.statusRunning {
+  color: #0f7835;
+  border-color: #c8e6c9;
+  background-color: #eaf6ea;
 }
 
-.statusStopped .statusCircle {
-  background-color: red;
+.statusRunning .statusIcon {
+  color: #0f7835;
 }
 
-.statusUnmonitored .statusCircle {
-  background-color: gray;
-} */
-
-.statusText {
-  color: white;
-  font-size: 28px; /* 기존보다 2배 */
-  font-weight: bold;
+.statusStopped {
+  color: #3e3e3e;
+  border-color: #d6d6d6;
+  background-color: #f3f3f3;
 }
 
-.statusRunning .statusText {
-  text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8); /* 그림자도 2배 */
+.statusStopped .statusIcon {
+  color: #3e3e3e;
 }
 
-.statusStopped .statusText {
-  text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8);
+.statusUnmonitored {
+  color: #d32f2f;
+  border-color: #f5c6c6;
+  background-color: #fdeeee;
 }
 
-.statusUnmonitored .statusText {
-  text-shadow: 0px 0px 10px rgba(128, 128, 128, 0.8);
+.statusUnmonitored .statusIcon {
+  color: #d32f2f;
 }
