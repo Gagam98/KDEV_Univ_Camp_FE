@@ -29,45 +29,59 @@ export default function Header({ search, color = "transparent" }) {
 
   function handleLogout() {
     localStorage.removeItem("userToken");
-
     navigate("/login");
   }
 
   return (
     <>
-      <div className={styles.header} style={{ backgroundColor: color }}>
-        <div className={styles.leftSection}>
-          <Link className={styles.logoContainer} to="/search">
-            <img src={logoImage} alt="Logo" className={styles.logoImage} />
-          </Link>
+      {/* 배경색을 전체에 적용하는 div */}
+      <div
+        className={styles.headerBackground}
+        style={{ backgroundColor: color }}
+      >
+        {/* 내부 컨텐츠는 max-width 적용 */}
+        <div className={styles.headerContainer}>
+          <div className={styles.header}>
+            <div className={styles.leftSection}>
+              <Link className={styles.logoContainer} to="/search">
+                <img src={logoImage} alt="Logo" className={styles.logoImage} />
+              </Link>
 
-          {search && (
-            <div className={styles.searchContainer}>
-              <input
-                type="text"
-                placeholder="Search..."
-                className={styles.searchInput}
-              />
+              {search && (
+                <div className={styles.searchContainer}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className={styles.searchInput}
+                  />
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className={styles.rightSection}>
-          <div className={styles.userInfo}>
-            <div className={styles.nickname}>{nickname}</div>
-            <div className={styles.popupContainer}>
-              <div className={styles.avatarCircle} onClick={togglePopup}>
-                {nickname?.charAt(0)}
-              </div>
-              <div
-                className={clsx(styles.popup, isShowPopup && styles.showPopup)}
-                onClick={onPopup}
-              >
-                <ul>
-                  <li>사용자 정보</li>
-                  <li onClick={handleLogout} className={styles.logoutButton}>
-                    로그아웃
-                  </li>
-                </ul>
+            <div className={styles.rightSection}>
+              <div className={styles.userInfo}>
+                <div className={styles.nickname}>{nickname}</div>
+                <div className={styles.popupContainer}>
+                  <div className={styles.avatarCircle} onClick={togglePopup}>
+                    {nickname?.charAt(0)}
+                  </div>
+                  <div
+                    className={clsx(
+                      styles.popup,
+                      isShowPopup && styles.showPopup
+                    )}
+                    onClick={onPopup}
+                  >
+                    <ul>
+                      <li>사용자 정보</li>
+                      <li
+                        onClick={handleLogout}
+                        className={styles.logoutButton}
+                      >
+                        로그아웃
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

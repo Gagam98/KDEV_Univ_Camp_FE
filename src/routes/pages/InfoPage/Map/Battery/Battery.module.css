@@ -1,6 +1,6 @@
 .batteryOverlay {
-  width: 90px;
-  height: 60px;
+  width: 180px; /* 기존보다 2배 */
+  height: 120px; /* 기존보다 2배 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,12 +9,11 @@
 
 .batteryBox {
   position: relative;
-  width: 80px;
-  height: 40px;
-  border: 2px solid #ffffff;
-  border-radius: 8px;
+  width: 160px; /* 기존보다 2배 */
+  height: 80px; /* 기존보다 2배 */
+  border: 4px solid #ffffff; /* 크기에 맞게 두께 증가 */
+  border-radius: 16px; /* 비율 맞춰 조정 */
   background: transparent;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .batteryProgress {
@@ -25,12 +24,12 @@
 
 .batteryCap {
   position: absolute;
-  top: 12px;
-  right: -5px;
-  width: 4px;
-  height: 16px;
+  top: 24px; /* 기존보다 2배 */
+  right: -10px; /* 기존보다 2배 */
+  width: 8px; /* 기존보다 2배 */
+  height: 32px; /* 기존보다 2배 */
   background: #ffffff;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .chargingIcon {
@@ -41,16 +40,16 @@
 }
 
 .chargingIconSymbol {
-  font-size: 16px;
+  font-size: 32px; /* 기존보다 2배 */
   color: #ffffff;
-  text-shadow: 0px 0px 3px #000000;
+  text-shadow: 0px 0px 6px #000000; /* 그림자도 비율 증가 */
 }
 
 .batteryText {
   position: absolute;
-  bottom: 4px;
-  right: 4px;
-  font-size: 12px;
+  bottom: 8px; /* 기존보다 2배 */
+  right: 8px; /* 기존보다 2배 */
+  font-size: 24px; /* 기존보다 2배 */
   color: #ffffff;
-  text-shadow: 0px 0px 3px #000000;
+  text-shadow: 0px 0px 6px #000000;
 }

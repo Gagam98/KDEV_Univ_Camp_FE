@@ -1,22 +1,27 @@
+.headerBackground {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.headerContainer {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
 .header {
+  width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  border-radius: 0;
   box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.leftSection {
-  display: flex;
-  align-items: center;
-  gap: 100px;
 }
 
 .logoContainer {
@@ -44,6 +49,7 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* 검색 컨테이너 */
 .searchContainer {
   display: flex;
   align-items: center;
@@ -57,16 +63,19 @@
   outline: none;
 }
 
+/* 사용자 정보 */
 .userInfo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .nickname {
   color: #fff;
   font-weight: 500;
 }
 
+/* 프로필 아이콘 */
 .avatarCircle {
   width: 36px;
   height: 36px;
@@ -79,9 +88,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
 }
 
+/* 팝업 메뉴 */
 .popupContainer {
   position: relative;
   width: min-content;
@@ -101,10 +110,12 @@
   transition: 0.3s;
   font-size: 12px;
 }
+
 .showPopup {
   opacity: 1;
   visibility: visible;
 }
+
 .popup ul {
   padding: 4px 0;
   border-bottom: 1px solid #ccc;

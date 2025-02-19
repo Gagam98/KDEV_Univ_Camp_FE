@@ -154,7 +154,11 @@ export default function DailyDistance({ carNumber }) {
         일일 주행거리
       </h3>
       <h4>총 {dailyDrivingTime.format}</h4>
-      <div className={styles.chart} ref={chartRef}></div>
+      <div
+        className={styles.chart}
+        style={{ width: "400px" }}
+        ref={chartRef}
+      ></div>
     </div>
   );
 }
