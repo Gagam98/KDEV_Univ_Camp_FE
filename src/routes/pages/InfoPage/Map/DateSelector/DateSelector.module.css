@@ -12,26 +12,21 @@
   align-items: center;
   justify-content: flex-start;
   width: auto;
-  max-width: 300px;
+  max-width: 280px;
   height: 30px;
   background: white;
   border-radius: 4px;
   padding: 5px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 10px;
 }
 
-.selectedDate {
-  margin-left: 5px;
-  font-size: 12px;
-  flex-grow: 1;
-}
-
-.calendarPopup {
+.popupContainer {
   position: absolute;
   top: 40px;
   right: 0;
@@ -39,11 +34,22 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   padding: 10px;
+  z-index: 1000;
+}
+
+.dropdownWrapper select {
+  width: 100%;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: white;
 }
 
 .calendarWrapper {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
 }
 
 .calendarItem {
@@ -52,14 +58,51 @@
   align-items: center;
 }
 
-.calendarIcon {
-  width: 16px;
-  height: 16px;
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cancelButton,
+.applyButton {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background: #f0f0f0;
+}
+
+.applyButton {
+  background: #000;
+  color: white;
+}
+
+.smallCalendarIcon {
+  width: 12px;
+  height: 12px;
   margin-right: 5px;
 }
 
-.intervalSelector select {
-  padding: 5px;
-  border-radius: 4px;
-  background: white;
+.calendarWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+  font-size: 12px;
+  transform: translateX(0);
+}
+
+.selectedDateBlack {
+  background: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.selectedDateGray {
+  background: #b9b9b9;
+  border-radius: 5px;
 }

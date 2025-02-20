@@ -129,14 +129,22 @@ export default function DailyDistance({ carNumber }) {
           },
         ],
       });
-    }
 
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.dispose();
-        chartInstance.current = null;
-      }
-    };
+      const handleResize = () => {
+        if (chartInstance.current) {
+          chartInstance.current.resize();
+        }
+      };
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        if (chartInstance.current) {
+          chartInstance.current.dispose();
+          chartInstance.current = null;
+        }
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, [hourlyDistances]);
 
   return (
