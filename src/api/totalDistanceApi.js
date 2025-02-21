@@ -32,7 +32,6 @@ export const totalDistance = async (carNumber) => {
 
     const data = await response.json();
 
-    // ✅ `weeklyDistance` 내부 데이터 올바르게 추출
     if (!data.weeklyDistance) {
       return { exists: false };
     }

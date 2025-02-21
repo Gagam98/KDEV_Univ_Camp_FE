@@ -146,7 +146,7 @@ export default function DailyDistance({ carNumber }) {
         </svg>
         일일 주행거리
       </h3>
-      <h4>총 {totalHourlyDistance} km</h4>
+      <h4>총 {totalHourlyDistance}km</h4>
       <div className={styles.chart} ref={chartRef}></div>
     </div>
   );

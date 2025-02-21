@@ -33,7 +33,6 @@ export const searchTripData = async (startDate, endDate, interval = 60) => {
 
     const data = await response.json();
 
-    // 반환 데이터 구조 변경: 위도, 경도만 포함
     return {
       startDate,
       endDate,
