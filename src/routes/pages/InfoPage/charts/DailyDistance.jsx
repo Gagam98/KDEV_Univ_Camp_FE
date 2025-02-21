@@ -3,27 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./common.module.css";
 import { searchCarInfo } from "@/api/carApi";
 
-/**
- * millisecond 단위를 시간으로 변환하는 함수
- * @param {number} hour - 밀리초 단위의 시간 값
- * @returns {object} 변환된 시간 값 (일, 시간, 포맷 문자열)
- */
-function getHour(hour) {
-  const th = hour / 1000 / 60 / 60;
-  const d = Number.parseInt(th / 24);
-  const h = Number.parseInt(th % 24);
-  return {
-    day: d,
-    hour: h,
-    format: `${d > 0 ? `${d}d ` : ""}${h}h`,
-  };
-}
-
 export default function DailyDistance({ carNumber }) {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const [hourlyDistances, setHourlyDistances] = useState([]);
-  const [dailyDrivingTime, setDailyDrivingTime] = useState({ format: "0h" });
+  const [totalHourlyDistance, setTotalHourlyDistance] = useState(0);
 
   useEffect(() => {
     if (!carNumber) return;
@@ -34,10 +18,11 @@ export default function DailyDistance({ carNumber }) {
         if (response.exists) {
           const data = response.data;
           const hourlyData = data.hourlyDistances?.[0]?.distances || [];
-          const convertedTime = getHour(data.dailyDrivingTime || 0);
+          const totalDistance =
+            data.hourlyDistances?.[0]?.totalHourlyDistance || 0;
 
           setHourlyDistances(hourlyData);
-          setDailyDrivingTime(convertedTime);
+          setTotalHourlyDistance(totalDistance);
         }
       } catch (error) {
         console.error("일일 주행거리 조회 실패:", error);
@@ -161,7 +146,7 @@ export default function DailyDistance({ carNumber }) {
         </svg>
         일일 주행거리
       </h3>
-      <h4>총 {dailyDrivingTime.format}</h4>
+      <h4>총 {totalHourlyDistance} km</h4>
       <div className={styles.chart} ref={chartRef}></div>
     </div>
   );

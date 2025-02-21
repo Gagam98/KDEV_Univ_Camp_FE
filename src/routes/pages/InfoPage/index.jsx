@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchCarInfo } from "@/api/carApi";
-import { fetchWeeklyDistance } from "@/api/totalDistanceApi";
+import { totalDistance } from "@/api/totalDistanceApi";
 import Header from "@/components/Header";
 import Navigation from "./Navigation";
 import Map from "./Map";
@@ -22,10 +22,8 @@ export default function InfoPage() {
         const { data } = await searchCarInfo(carNumber);
         setCarInfo(data);
 
-        const distanceData = await fetchWeeklyDistance(carNumber);
-        if (distanceData.exists) {
-          setWeeklyDistance(distanceData.data);
-        }
+        const distanceData = await totalDistance(carNumber);
+        setWeeklyDistance(distanceData.exists ? distanceData.data : null);
       } catch (error) {
         console.error("차량 정보 조회 실패:", error);
       }
