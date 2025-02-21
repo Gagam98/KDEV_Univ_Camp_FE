@@ -11,17 +11,20 @@ const Map = ({ carInfo }) => {
   const [map, setMap] = useState(null);
   const [polyline, setPolyline] = useState(null);
   const [apiData, setApiData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(["All time"]);
+  const [selectedDate, setSelectedDate] = useState(["", ""]);
   const [selectedInterval, setSelectedInterval] = useState(60);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!selectedDate[0] || !selectedDate[1]) {
-        console.error("🚨 startDate 또는 endDate가 정의되지 않았습니다.");
+      if (!carInfo?.vehicleNumber) {
+        console.error("🚨 차량 번호 없음!");
         return;
       }
+
       try {
+        // ✅ `carInfo.vehicleNumber`를 `searchTripData`에 전달
         const tripData = await searchTripData(
+          carInfo.vehicleNumber,
           selectedDate[0],
           selectedDate[1],
           selectedInterval
@@ -32,10 +35,11 @@ const Map = ({ carInfo }) => {
       }
     };
     fetchData();
-  }, [selectedDate, selectedInterval]);
+  }, [carInfo, selectedDate, selectedInterval]);
 
   const initMap = useCallback(() => {
     if (apiData.length === 0) return;
+
     const mapContainer = document.getElementById("map");
     const mapOption = {
       center: new kakao.maps.LatLng(apiData[0].latitude, apiData[0].longitude),
@@ -62,8 +66,8 @@ const Map = ({ carInfo }) => {
       const newPolyline = new kakao.maps.Polyline({
         path: linePath,
         strokeWeight: 5,
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
+        strokeColor: "#FFAE00",
+        strokeOpacity: 0.7,
         strokeStyle: "solid",
       });
 
