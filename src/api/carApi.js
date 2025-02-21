@@ -7,6 +7,10 @@ import { BASE_URL } from "./config";
  */
 export const searchCarInfo = async (carNumber) => {
   try {
+    if (!carNumber) {
+      throw new Error("차량 번호가 필요합니다.");
+    }
+
     const token = localStorage.getItem("userToken");
     const response = await fetch(
       `${BASE_URL}/api/vehicle-status/details/${carNumber}`,
@@ -31,7 +35,7 @@ export const searchCarInfo = async (carNumber) => {
     const data = await response.json();
     return { exists: true, data };
   } catch (error) {
-    console.error("차량 조회 에러:", error);
+    console.error("🚨 차량 조회 에러:", error);
     throw error;
   }
 };
