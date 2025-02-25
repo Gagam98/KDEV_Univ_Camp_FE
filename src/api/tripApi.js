@@ -22,9 +22,8 @@ export const searchTripData = async (
     const token = localStorage.getItem("userToken");
 
     const queryParams = new URLSearchParams();
-    queryParams.append("carNumber", carNumber); // ✅ 차량 번호 추가
+    queryParams.append("carNumber", carNumber);
 
-    // ✅ 날짜 값이 있는 경우만 추가
     if (startDate && /^\d{4}-\d{2}-\d{2}$/.test(startDate)) {
       queryParams.append("startDate", startDate);
     }
@@ -34,7 +33,6 @@ export const searchTripData = async (
 
     queryParams.append("interval", interval);
 
-    // ✅ API 요청 실행
     const response = await fetch(
       `${BASE_URL}/api/trip/search?${queryParams.toString()}`,
       {
@@ -46,12 +44,10 @@ export const searchTripData = async (
       }
     );
 
-    // ✅ 응답이 정상적이지 않을 경우 예외 처리
     if (!response.ok) {
       throw new Error(`데이터를 검색할 수 없습니다: ${response.statusText}`);
     }
 
-    // ✅ JSON 데이터 변환
     const data = await response.json();
 
     return {
