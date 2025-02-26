@@ -79,7 +79,7 @@ export default function TotalDistance({ weeklyDistance }) {
                     color: "rgba(0,0,0,0.3)",
                   },
                   label: {
-                    show: true,
+                    show: false,
                     position: "end",
                     formatter: "평균: {c}",
                     color: "#000",
